@@ -1,0 +1,9 @@
+﻿  PlayState.cpp
+c:\users\822\desktop\engine\ventana4\ventana4\ventana.h(10): warning C4251: 'Ventana::className': class 'std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Ventana'
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\xstring(2635): note: vea la declaración de 'std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t>>'
+c:\users\822\desktop\engine\ventana4\ventana4\graphics.h(34): warning C4251: 'Graphics::vertexBufferShape': class 'VertexBufferManager<CUSTOMVERTEX,66>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Graphics'
+  c:\users\822\desktop\engine\ventana4\ventana4\graphics.h(34): note: vea la declaración de 'VertexBufferManager<CUSTOMVERTEX,66>'
+c:\users\822\desktop\engine\ventana4\ventana4\graphics.h(35): warning C4251: 'Graphics::vertexBufferSprite': class 'VertexBufferManager<CUSTOMVERTEXTEXTURE,258>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Graphics'
+  c:\users\822\desktop\engine\ventana4\ventana4\graphics.h(35): note: vea la declaración de 'VertexBufferManager<CUSTOMVERTEXTEXTURE,258>'
+  Eljuego.vcxproj -> C:\Users\822\Desktop\Engine\Ventana4\x64\Debug\Eljuego.exe
+  Eljuego.vcxproj -> C:\Users\822\Desktop\Engine\Ventana4\x64\Debug\Eljuego.pdb (Full PDB)

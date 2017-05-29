@@ -135,40 +135,6 @@ bool Graphics::SetupScene()
 
 	return true;
 }
-/*int Graphics::VertexBuffer(CUSTOMVERTEX *vertices)
-{
-	HRESULT hr;
-	// Initialize three vertices for rendering a triangle
-
-	CUSTOMVERTEX vertices[] =
-	{
-		{ 50.0f, 200.0f, 0.5f, D3DCOLOR_ARGB(255, 255, 0, 255), },
-		{ 360.0f, 500.0f, 0.5f, D3DCOLOR_ARGB(255, 255, 255, 0), },
-		{ 650.0f, 200.0f, 0.5f, D3DCOLOR_ARGB(255, 0, 255, 255), },
-	};
-	// Create the vertex buffer
-	hr = pd3dDevice->CreateVertexBuffer(3 * sizeof(CUSTOMVERTEX), 0, D3DFVF_XYZ | D3DFVF_DIFFUSE, D3DPOOL_MANAGED, &g_pVB, NULL);
-
-	// Check to make sure that the vertex buffer was
-	// created successfully
-	if (FAILED(hr))
-		return NULL;
-	VOID* pVertices;
-
-	// Lock the vertex buffer
-	hr = g_pVB->Lock(0, 3 * sizeof(CUSTOMVERTEX), (void**)&pVertices, 0);
-
-	// Check to make sure the lock was successful
-	if (FAILED(hr))
-		return E_FAIL;
-
-	// Copy the vertices into the buffer
-	memcpy(pVertices, &vertices, 3 * sizeof(CUSTOMVERTEX));
-
-	// Unlock the vertex buffer
-	g_pVB->Unlock();
-	return S_OK;
-}*/
 void Graphics::DrawShape(CUSTOMVERTEX* vertices, int cantVert)
 {
 	vertexBufferShape.Bind();
