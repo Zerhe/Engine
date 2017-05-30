@@ -1,4 +1,4 @@
-﻿  Graphics.cpp
+﻿  Sprite.cpp
 c:\users\822\desktop\engine\ventana4\ventana4\graphics.h(34): warning C4251: 'Graphics::vertexBufferShape': class 'VertexBufferManager<CUSTOMVERTEX,66>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Graphics'
   c:\users\822\desktop\engine\ventana4\ventana4\graphics.h(34): note: vea la declaración de 'VertexBufferManager<CUSTOMVERTEX,66>'
 c:\users\822\desktop\engine\ventana4\ventana4\graphics.h(35): warning C4251: 'Graphics::vertexBufferSprite': class 'VertexBufferManager<CUSTOMVERTEXTEXTURE,258>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Graphics'

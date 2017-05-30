@@ -5,5 +5,6 @@ c:\users\822\desktop\engine\ventana4\ventana4\graphics.h(34): warning C4251: 'Gr
   c:\users\822\desktop\engine\ventana4\ventana4\graphics.h(34): note: vea la declaración de 'VertexBufferManager<CUSTOMVERTEX,66>'
 c:\users\822\desktop\engine\ventana4\ventana4\graphics.h(35): warning C4251: 'Graphics::vertexBufferSprite': class 'VertexBufferManager<CUSTOMVERTEXTEXTURE,258>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Graphics'
   c:\users\822\desktop\engine\ventana4\ventana4\graphics.h(35): note: vea la declaración de 'VertexBufferManager<CUSTOMVERTEXTEXTURE,258>'
+c:\users\822\desktop\engine\ventana4\eljuego\playstate.cpp(26): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
   Eljuego.vcxproj -> C:\Users\822\Desktop\Engine\Ventana4\x64\Debug\Eljuego.exe
   Eljuego.vcxproj -> C:\Users\822\Desktop\Engine\Ventana4\x64\Debug\Eljuego.pdb (Full PDB)

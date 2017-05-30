@@ -13,5 +13,6 @@ class VENTANA4_API Shape : public Entity2D {
 public:
 	Shape(Graphics *graficos,float x, float y, float z, float angle, float sx, float sy, float sz);
 	void Draw();
+	void setUV();
 };
 #endif

@@ -9,9 +9,12 @@
 using namespace std;
 
 class PlayState : public Game {
-	Shape* _shape;
-	Shape* _shape2;
 	Sprite* _sprite;
+	Sprite* _sprite2;
+	Sprite* _sprite3;
+	float _uvs[8] {0.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f};
+	int _contador = 0;
+
 protected:
 	bool onInit();
 	bool onUpdate();
