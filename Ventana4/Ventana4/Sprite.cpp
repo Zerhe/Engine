@@ -30,9 +30,9 @@ void Sprite::Draw()
 void Sprite::setPosition(float x, float y, float width, float height, int textureWidth, int textureHeight)
 {
 	_vertices[0] = { x, y, 0.5f, 0.0f, 1.0f };
-	_vertices[1] = { x + width, y, 0.5f, 1.0f, 1.0f };
+	_vertices[1] = { x + width, y, 0.5f, width/textureWidth, 1.0f };
 	_vertices[2] = { x, y + height, 0.5f, 0.0f, 0.0f };
-	_vertices[3] = { x + width, y + height, 0.5f, 1.0f, 0.0f };
+	_vertices[3] = { x + width, y + height, 0.5f, width/textureWidth, 0.0f };
 	//670 369
 }
 void Sprite::setUv() 

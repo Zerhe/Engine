@@ -2,7 +2,7 @@
 
 bool PlayState::onInit()
 {
-	_sprite = new Sprite(_graficos, 0, 0, 0, 0, 1, 1, 1, L"../Walk.png");
+	_sprite = new Sprite(_graficos, 0, 0, 0, 0, 1, 1, 1, L"../Walk2.png");
 
 	return true;
 }
@@ -23,7 +23,7 @@ bool PlayState::onUpdate()
 	switch (_contador)
 	{
 		case 20:
-			_sprite->setPosition(200.0f, 200.0f, 150.0f, 250.0f, 670.0f, 369.0f);
+			_sprite->setPosition(200.0f, 200.0f, 200.0f, 312.0f, 2000.0f, 312.0f);
 			break;
 		case 50:
 			break;
