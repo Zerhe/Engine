@@ -168,6 +168,8 @@
     <ClInclude Include="Graphics.h" />
     <ClInclude Include="Shape.h" />
     <ClInclude Include="Sprite.h" />
+    <ClInclude Include="Texture.h" />
+    <ClInclude Include="TextureManager.h" />
     <ClInclude Include="Ventana.h" />
     <ClInclude Include="VertexBufferManager.h" />
   </ItemGroup>

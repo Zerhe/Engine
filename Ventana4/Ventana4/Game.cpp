@@ -4,6 +4,7 @@
 bool Game::startup(HINSTANCE hInstance) {
 	_ventanita = new Ventana();
 	_graficos = new Graphics();
+	_textureManager = new TextureManager();
 	int _width = 800;
 	int _height = 600;
 
@@ -50,6 +51,8 @@ bool Game::shutdown() {
 		delete _ventanita;
 	if (_graficos)
 		delete _graficos;
+	if (_textureManager)
+		delete _textureManager;
 
 	return onShutdown();
 }

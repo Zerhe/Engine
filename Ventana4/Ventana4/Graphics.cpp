@@ -180,7 +180,6 @@ LPDIRECT3DTEXTURE9 Graphics::LoadTexture(LPCWSTR stringTexture)
 	D3DXCreateTextureFromFile(pd3dDevice, stringTexture, &_texture);
 
 	return _texture;
-
 }
 void Graphics::BindTexture(LPDIRECT3DTEXTURE9 textura) 
 {

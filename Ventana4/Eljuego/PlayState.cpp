@@ -2,7 +2,7 @@
 
 bool PlayState::onInit()
 {
-	_sprite = new Sprite(_graficos, 0, 0, 0, 0, 1, 1, 1, L"../Walk2.png");
+	_sprite = new Sprite(_graficos, _textureManager, 0, 0, 0, 0, 1, 1, 1, L"../Walk2.png");
 
 	return true;
 }

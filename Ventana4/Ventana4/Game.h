@@ -5,6 +5,8 @@
 #include <string>
 #include "Ventana.h"
 #include "Graphics.h"
+#include "TextureManager.h"
+
 using namespace std;
 
 
@@ -16,6 +18,7 @@ public:
 	bool shutdown();
 protected:
 	Graphics* _graficos;
+	TextureManager* _textureManager;
 	virtual bool onInit() { return true; };
 	virtual bool onUpdate() { return true; };
 	virtual void onDraw(){};

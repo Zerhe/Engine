@@ -65,5 +65,11 @@
     <ClInclude Include="Sprite.h">
       <Filter>Archivos de código fuente</Filter>
     </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Archivos de código fuente</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureManager.h">
+      <Filter>Archivos de código fuente</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

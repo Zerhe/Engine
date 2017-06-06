@@ -1,9 +1,10 @@
 #include "Sprite.h"
 
-Sprite::Sprite(Graphics *graficos, float x, float y, float z, float angle, float sX, float sY, float sZ, LPCWSTR stringTexture)
+Sprite::Sprite(Graphics* graficos, TextureManager* textureManager, float x, float y, float z, float angle, float sX, float sY, float sZ, LPCWSTR stringTexture)
 {
 	_graficos = graficos;
-	_texture = _graficos->LoadTexture(stringTexture);
+	_textureManager = textureManager;
+	_texture = _textureManager->CreateTexture(stringTexture, _graficos);
 	_x = x;
 	_y = y;
 	_z = z;
@@ -22,7 +23,7 @@ void Sprite::Draw()
 {
 	Entity2D::Draw(_graficos);
 
-	_graficos->BindTexture(_texture);
+	_graficos->BindTexture(_texture->getTexture());
 
 	_graficos->DrawSprite(_vertices, 4);
 
