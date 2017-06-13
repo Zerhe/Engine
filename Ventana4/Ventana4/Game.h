@@ -6,19 +6,22 @@
 #include "Ventana.h"
 #include "Graphics.h"
 #include "TextureManager.h"
+#include "TimeMeter.h"
 
 using namespace std;
 
 
 class VENTANA4_API Game {
-	Ventana* _ventanita;
 public:
 	bool startup(HINSTANCE hInstance);
 	void loop();
 	bool shutdown();
 protected:
+	Ventana* _ventanita;
 	Graphics* _graficos;
 	TextureManager* _textureManager;
+	TimeMeter* _timeMeter;
+
 	virtual bool onInit() { return true; };
 	virtual bool onUpdate() { return true; };
 	virtual void onDraw(){};

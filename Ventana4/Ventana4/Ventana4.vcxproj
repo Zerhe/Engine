@@ -157,6 +157,7 @@
     <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="Shape.cpp" />
     <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="TimeMeter.cpp" />
     <ClCompile Include="Ventana.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -170,6 +171,7 @@
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TextureManager.h" />
+    <ClInclude Include="TimeMeter.h" />
     <ClInclude Include="Ventana.h" />
     <ClInclude Include="VertexBufferManager.h" />
   </ItemGroup>

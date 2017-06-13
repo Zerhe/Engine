@@ -19,7 +19,7 @@ Shape::Shape(Graphics *graficos, float x, float y, float z, float angle, float s
 }
 void Shape::Draw() 
 {
-	Entity2D::Draw(_graficos);
+	Transform(_graficos);
 	_graficos->BindTexture(NULL);
 
 	_graficos->DrawShape(_vertices, 3);

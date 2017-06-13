@@ -8,7 +8,7 @@
 using namespace std;
 
 class VENTANA4_API Entity2D : public Entity {
-protected:
+public:
 	float _x = 0;
 	float _y = 0;
 	float _z = 0;;
@@ -16,9 +16,7 @@ protected:
 	float _sX = 1;
 	float _sY = 1;
 	float _sZ = 1;
-
-public:
-	void Draw(Graphics *graficos);
+	void Transform(Graphics *graficos);
 };
 
 #endif

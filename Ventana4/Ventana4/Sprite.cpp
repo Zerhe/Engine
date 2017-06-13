@@ -21,20 +21,19 @@ Sprite::Sprite(Graphics* graficos, TextureManager* textureManager, float x, floa
 }
 void Sprite::Draw()
 {
-	Entity2D::Draw(_graficos);
+	Transform(_graficos);
 
 	_graficos->BindTexture(_texture->getTexture());
 
 	_graficos->DrawSprite(_vertices, 4);
 
 }
-void Sprite::setPosition(float x, float y, float width, float height, int textureWidth, int textureHeight)
+void Sprite::setSize(float x, float y, float width, float height, int textureWidth, int textureHeight, int izq, int der)
 {
-	_vertices[0] = { x, y, 0.5f, 0.0f, 1.0f };
-	_vertices[1] = { x + width, y, 0.5f, width/textureWidth, 1.0f };
-	_vertices[2] = { x, y + height, 0.5f, 0.0f, 0.0f };
-	_vertices[3] = { x + width, y + height, 0.5f, width/textureWidth, 0.0f };
-	//670 369
+	_vertices[0] = { x, y, 0.5f, width / textureWidth * izq, 1.0f };
+	_vertices[1] = { x + width, y, 0.5f, width/textureWidth * der, 1.0f };
+	_vertices[2] = { x, y + height, 0.5f, width / textureWidth * izq, 0.0f };
+	_vertices[3] = { x + width, y + height, 0.5f, width/textureWidth * der, 0.0f };
 }
 void Sprite::setUv() 
 {

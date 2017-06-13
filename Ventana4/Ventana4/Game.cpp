@@ -5,6 +5,7 @@ bool Game::startup(HINSTANCE hInstance) {
 	_ventanita = new Ventana();
 	_graficos = new Graphics();
 	_textureManager = new TextureManager();
+	_timeMeter = new TimeMeter();
 	int _width = 800;
 	int _height = 600;
 
@@ -16,7 +17,7 @@ bool Game::startup(HINSTANCE hInstance) {
 
 	_graficos->Initialize(_ventanita->getHwnd(), _width, _height);
 	_graficos->SetupScene();
-	//graficos->VertexBuffer();
+	_timeMeter->FirstMeasure();
 	return onInit();
 }
 void Game::loop() {
@@ -43,6 +44,7 @@ void Game::loop() {
 			_graficos->Present();
 			done = !onUpdate();
 		}
+		_timeMeter->Measure();
 	}
 }
 bool Game::shutdown() {
@@ -56,6 +58,3 @@ bool Game::shutdown() {
 
 	return onShutdown();
 }
-/*void Game::onDraw() {
-	graficos->Draw();
-}*/
