@@ -17,7 +17,7 @@ class VENTANA4_API Sprite : public Entity2D {
 public:
 	Sprite(Graphics *graficos,TextureManager* textureManager, float x, float y, float z, float angle, float sx, float sy, float sz, LPCWSTR stringTexture);
 	void Draw();
-	void setSize(float x, float y, float width, float height, int textureWidth, int textureHeight, int izq, int der);
+	void setSize(float x, float y, float width, float height, int textureWidth, int textureHeight, int frame, int framesAncho);
 	void setUv();
 };
 #endif
