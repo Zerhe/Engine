@@ -21,15 +21,6 @@ c:\users\usuario\desktop\proyectos\engine\ventana4\ventana4\texturemanager.h(13)
   c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.10.25017\include\list(571): note: see declaration of 'std::_List_iterator<std::_List_val<std::_List_simple_types<Texture *>>>'
 c:\users\usuario\desktop\proyectos\engine\ventana4\ventana4\texturemanager.h(14): warning C4251: 'TextureManager::iter': class 'std::_List_iterator<std::_List_val<std::_List_simple_types<Texture *>>>' needs to have dll-interface to be used by clients of class 'TextureManager'
   c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.10.25017\include\list(571): note: see declaration of 'std::_List_iterator<std::_List_val<std::_List_simple_types<Texture *>>>'
-c:\users\usuario\desktop\proyectos\engine\ventana4\eljuego\playstate.cpp(26): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\usuario\desktop\proyectos\engine\ventana4\eljuego\playstate.cpp(29): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\usuario\desktop\proyectos\engine\ventana4\eljuego\playstate.cpp(32): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\usuario\desktop\proyectos\engine\ventana4\eljuego\playstate.cpp(35): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\usuario\desktop\proyectos\engine\ventana4\eljuego\playstate.cpp(38): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\usuario\desktop\proyectos\engine\ventana4\eljuego\playstate.cpp(41): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\usuario\desktop\proyectos\engine\ventana4\eljuego\playstate.cpp(44): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\usuario\desktop\proyectos\engine\ventana4\eljuego\playstate.cpp(47): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\usuario\desktop\proyectos\engine\ventana4\eljuego\playstate.cpp(50): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\usuario\desktop\proyectos\engine\ventana4\eljuego\playstate.cpp(53): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\usuario\desktop\proyectos\engine\ventana4\eljuego\playstate.cpp(25): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
   Eljuego.vcxproj -> C:\Users\Usuario\Desktop\Proyectos\Engine\Ventana4\x64\Debug\Eljuego.exe
   Eljuego.vcxproj -> C:\Users\Usuario\Desktop\Proyectos\Engine\Ventana4\x64\Debug\Eljuego.pdb (Partial PDB)
