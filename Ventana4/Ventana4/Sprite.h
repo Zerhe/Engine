@@ -14,10 +14,11 @@ class VENTANA4_API Sprite : public Entity2D {
 	TextureManager* _textureManager;
 	Texture* _texture;
 	CUSTOMVERTEXTEXTURE* _vertices;
+	int _frame;
 public:
-	Sprite(Graphics *graficos,TextureManager* textureManager, float x, float y, float z, float angle, float sx, float sy, float sz, LPCWSTR stringTexture);
+	Sprite(Graphics *graficos, TextureManager* textureManager, float x, float y, float z, float angle, float sx, float sy, float sz, float r, int collType, LPCWSTR stringTexture);
 	void Draw();
-	void setSize(float x, float y, float width, float height, int textureWidth, int textureHeight, int frame, int framesAncho);
-	void setUv();
+	void SetUv(float x, float y, float width, float height, int textureWidth, int textureHeight, int framesAncho);
+	void LaterFrame();
 };
 #endif

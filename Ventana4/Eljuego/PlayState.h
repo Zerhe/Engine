@@ -14,7 +14,6 @@ class PlayState : public Game {
 	Sprite* _sprite3;
 	float _uvs[8] {0.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f};
 	int _contador = 0;
-	int _frame = 0;
 
 protected:
 	bool onInit();

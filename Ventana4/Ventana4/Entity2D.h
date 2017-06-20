@@ -4,6 +4,7 @@
 #include <windows.h>
 #include <string>
 #include "Entity.h"
+#include "Entity2D.h"
 #include "Graphics.h"
 using namespace std;
 
@@ -16,7 +17,10 @@ public:
 	float _sX = 1;
 	float _sY = 1;
 	float _sZ = 1;
+	float _r = 0;
+	int _collType;
 	void Transform(Graphics *graficos);
+	virtual void OnCollision(Entity2D *entidad);
 };
 
 #endif
