@@ -16,9 +16,12 @@ class VENTANA4_API Sprite : public Entity2D {
 	CUSTOMVERTEXTEXTURE* _vertices;
 	int _frame;
 public:
-	Sprite(Graphics *graficos, TextureManager* textureManager, float x, float y, float z, float angle, float sx, float sy, float sz, float r, int collType, LPCWSTR stringTexture);
+	float _textureWidth = 0;
+	float _textureHeight = 0;;
+	Sprite(Graphics *graficos, TextureManager* textureManager, float x, float y, float z, float angle, float sx, float sy, float sz, int collType, float r, LPCWSTR stringTexture, float textureWidth, float textureHeight);
 	void Draw();
 	void SetUv(float x, float y, float width, float height, int textureWidth, int textureHeight, int framesAncho);
 	void LaterFrame();
+	//void OnCollision(Entity2D *entidad);
 };
 #endif

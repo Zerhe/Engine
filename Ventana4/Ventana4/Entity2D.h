@@ -18,9 +18,11 @@ public:
 	float _sY = 1;
 	float _sZ = 1;
 	float _r = 0;
-	int _collType;
+	int _collType = 0;
+	float _collWidth = 0;
+	float _collHeight = 0;
 	void Transform(Graphics *graficos);
-	virtual void OnCollision(Entity2D *entidad);
+	virtual void OnCollision(Entity2D *entidad) { delete this; };
 };
 
 #endif

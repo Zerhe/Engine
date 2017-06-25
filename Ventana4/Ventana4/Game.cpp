@@ -6,6 +6,7 @@ bool Game::startup(HINSTANCE hInstance) {
 	_graficos = new Graphics();
 	_textureManager = new TextureManager();
 	_timeMeter = new TimeMeter();
+	_collisionManager = new CollisionManager();
 	int _width = 800;
 	int _height = 600;
 
@@ -36,6 +37,7 @@ void Game::loop() {
 		}
 		else
 		{
+			_collisionManager->CheckCollision();
 			onUpdate();
 			_graficos->Clear();
 			_graficos->Begin();
@@ -55,6 +57,10 @@ bool Game::shutdown() {
 		delete _graficos;
 	if (_textureManager)
 		delete _textureManager;
+	if (_timeMeter)
+		delete _timeMeter;
+	if (_collisionManager)
+		delete _collisionManager;
 
 	return onShutdown();
 }

@@ -22,6 +22,10 @@ class VENTANA4_API CollisionManager{
 	float y2 = 0;
 	float r1 = 0;
 	float r2 = 0;
+	float width1 = 0;
+	float width2 = 0;
+	float height1 = 0;
+	float height2 = 0;
 
 public:
 	bool Register(Entity2D* entity, int group);

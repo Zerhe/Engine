@@ -1,6 +1,6 @@
 #include "Sprite.h"
 
-Sprite::Sprite(Graphics* graficos, TextureManager* textureManager, float x, float y, float z, float angle, float sX, float sY, float sZ, float r, int collType, LPCWSTR stringTexture)
+Sprite::Sprite(Graphics* graficos, TextureManager* textureManager, float x, float y, float z, float angle, float sX, float sY, float sZ, int collType, float r, LPCWSTR stringTexture, float textureWidth, float textureHeight)
 {
 	_graficos = graficos;
 	_textureManager = textureManager;
@@ -14,6 +14,8 @@ Sprite::Sprite(Graphics* graficos, TextureManager* textureManager, float x, floa
 	_sZ = sZ;
 	_collType = collType;
 	_frame = 0;
+	_collWidth = _textureWidth = textureWidth;
+	_collHeight = textureHeight = textureHeight;
 	if(collType == 1)
 		_r = r;
 
@@ -34,6 +36,9 @@ void Sprite::Draw()
 }
 void Sprite::SetUv(float x, float y, float width, float height, int textureWidth, int textureHeight, int framesAncho)
 {
+	_collWidth = width;
+	_collHeight = height;
+
 	_vertices[0] = { x, y, 0.5f, width / textureWidth * (_frame % framesAncho ), 1.0f };
 	_vertices[1] = { x + width, y, 0.5f, width/textureWidth * ((_frame + 1) % framesAncho), 1.0f };
 	_vertices[2] = { x, y + height, 0.5f, width / textureWidth * (_frame % framesAncho), 0.0f };
@@ -43,3 +48,7 @@ void Sprite::LaterFrame()
 {
 	_frame++;
 }
+/*void OnCollision(Entity2D *entidad)
+{
+
+}*/

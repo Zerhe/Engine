@@ -7,6 +7,7 @@
 #include "Graphics.h"
 #include "TextureManager.h"
 #include "TimeMeter.h"
+#include "CollisionManager.h"
 
 using namespace std;
 
@@ -21,6 +22,7 @@ protected:
 	Graphics* _graficos;
 	TextureManager* _textureManager;
 	TimeMeter* _timeMeter;
+	CollisionManager* _collisionManager;
 
 	virtual bool onInit() { return true; };
 	virtual bool onUpdate() { return true; };
