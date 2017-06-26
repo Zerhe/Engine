@@ -7,6 +7,8 @@
 #include "Entity2D.h"
 using namespace std;
 
+
+
 class VENTANA4_API CollisionManager{
 	list <Entity2D*> group01;
 	list <Entity2D*> group02;

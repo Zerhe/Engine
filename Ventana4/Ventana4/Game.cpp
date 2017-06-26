@@ -37,8 +37,8 @@ void Game::loop() {
 		}
 		else
 		{
-			_collisionManager->CheckCollision();
 			onUpdate();
+			_collisionManager->CheckCollision();
 			_graficos->Clear();
 			_graficos->Begin();
 			onDraw();

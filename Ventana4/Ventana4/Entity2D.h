@@ -8,6 +8,12 @@
 #include "Graphics.h"
 using namespace std;
 
+enum CollType
+{
+	Circle,
+	Square
+};
+
 class VENTANA4_API Entity2D : public Entity {
 public:
 	float _x = 0;
@@ -18,11 +24,11 @@ public:
 	float _sY = 1;
 	float _sZ = 1;
 	float _r = 0;
-	int _collType = 0;
+	CollType _collType = Circle;
 	float _collWidth = 0;
 	float _collHeight = 0;
 	void Transform(Graphics *graficos);
-	virtual void OnCollision(Entity2D *entidad) { delete this; };
+	virtual void OnCollision(Entity2D *entidad) {};
 };
 
 #endif

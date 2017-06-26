@@ -2,8 +2,8 @@
 
 bool PlayState::onInit()
 {
-	_sprite = new Sprite(_graficos, _textureManager, 0, 0, 0, 0, 1, 1, 1, 0, 0, L"../Walk2.png", 2000.0f, 312.0f);
-	_sprite2 = new Sprite(_graficos, _textureManager, 0, 0, 0, 0, 1, 1, 1, 0, 0, L"../Walk2.png", 2000.0f, 312.0f);
+	_sprite = new Sprite(_graficos, _textureManager, 0, 0, 0, 0, 1, 1, 1, Square, 0, L"../Walk2.png", 2000.0f, 312.0f);
+	_sprite2 = new Sprite(_graficos, _textureManager, 0, 0, 0, 0, 1, 1, 1, Square, 0, L"../Walk2.png", 2000.0f, 312.0f);
 	_collisionManager->Register(_sprite, 1);
 	_collisionManager->Register(_sprite2, 2);
 
@@ -29,9 +29,9 @@ bool PlayState::onUpdate()
 	_contador++;
 	if (_contador == 20)
 	{
-		_sprite->SetUv(500.0f, 200.0f, 200.0f, 312.0f, 2000.0f, 312.0f, 10);
+		_sprite->SetUv(500.0f, 200.0f, 200.0f, 312.0f, 10);
 		_sprite->LaterFrame();
-		_sprite2->SetUv(100.0f, 200.0f, 200.0f, 312.0f, 2000.0f, 312.0f, 10);
+		_sprite2->SetUv(100.0f, 200.0f, 200.0f, 312.0f, 10);
 		_sprite2->LaterFrame();
 		_contador = 0;
 	}

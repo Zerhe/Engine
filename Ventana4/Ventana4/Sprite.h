@@ -18,10 +18,10 @@ class VENTANA4_API Sprite : public Entity2D {
 public:
 	float _textureWidth = 0;
 	float _textureHeight = 0;;
-	Sprite(Graphics *graficos, TextureManager* textureManager, float x, float y, float z, float angle, float sx, float sy, float sz, int collType, float r, LPCWSTR stringTexture, float textureWidth, float textureHeight);
+	Sprite(Graphics *graficos, TextureManager* textureManager, float x, float y, float z, float angle, float sx, float sy, float sz, CollType collType, float r, LPCWSTR stringTexture, float textureWidth, float textureHeight);
 	void Draw();
-	void SetUv(float x, float y, float width, float height, int textureWidth, int textureHeight, int framesAncho);
+	void SetUv(float x, float y, float width, float height, int framesAncho);
 	void LaterFrame();
-	//void OnCollision(Entity2D *entidad);
+	void OnCollision(Entity2D *entidad);
 };
 #endif
