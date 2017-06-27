@@ -2,8 +2,8 @@
 
 bool PlayState::onInit()
 {
-	_sprite = new Sprite(_graficos, _textureManager, 0, 0, 0, 0, 1, 1, 1, Square, 0, L"../Walk2.png", 2000.0f, 312.0f);
-	_sprite2 = new Sprite(_graficos, _textureManager, 0, 0, 0, 0, 1, 1, 1, Square, 0, L"../Walk2.png", 2000.0f, 312.0f);
+	_sprite = new Sprite(_graficos, _textureManager, 500.0f, 200.0f, 0.0f, 200.0f, 312.0f, 0.0f, Square, 0.0f, L"../Walk2.png", 2000.0f, 312.0f);
+	_sprite2 = new Sprite(_graficos, _textureManager, 150.0f, 200.0f, 0.0f, 200.0f, 312.0f, 0.0f, Square, 0.0f, L"../Walk2.png", 2000.0f, 312.0f);
 	_collisionManager->Register(_sprite, 1);
 	_collisionManager->Register(_sprite2, 2);
 
@@ -12,7 +12,7 @@ bool PlayState::onInit()
 void PlayState::onDraw() 
 {
 	if (_sprite)
-	_sprite->Draw();
+		_sprite->Draw();
 	if (_sprite2)
 		_sprite2->Draw();
 }

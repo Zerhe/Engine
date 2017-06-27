@@ -53,5 +53,63 @@ c:\users\822\desktop\engine\ventana4\ventana4\collisionmanager.h(19): warning C4
   c:\program files (x86)\microsoft visual studio 14.0\vc\include\list(577): note: vea la declaración de 'std::_List_iterator<std::_List_val<std::_List_simple_types<Entity2D *>>>'
 c:\users\822\desktop\engine\ventana4\ventana4\collisionmanager.h(20): warning C4251: 'CollisionManager::iter02': class 'std::_List_iterator<std::_List_val<std::_List_simple_types<Entity2D *>>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'CollisionManager'
   c:\program files (x86)\microsoft visual studio 14.0\vc\include\list(577): note: vea la declaración de 'std::_List_iterator<std::_List_val<std::_List_simple_types<Entity2D *>>>'
+  Generando código...
+  Compilando...
+  main.cpp
+c:\users\822\desktop\engine\ventana4\ventana4\ventana.h(10): warning C4251: 'Ventana::className': class 'std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Ventana'
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\xstring(2635): note: vea la declaración de 'std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t>>'
+c:\users\822\desktop\engine\ventana4\ventana4\graphics.h(34): warning C4251: 'Graphics::vertexBufferShape': class 'VertexBufferManager<CUSTOMVERTEX,66>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Graphics'
+  c:\users\822\desktop\engine\ventana4\ventana4\graphics.h(34): note: vea la declaración de 'VertexBufferManager<CUSTOMVERTEX,66>'
+c:\users\822\desktop\engine\ventana4\ventana4\graphics.h(35): warning C4251: 'Graphics::vertexBufferSprite': class 'VertexBufferManager<CUSTOMVERTEXTEXTURE,258>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Graphics'
+  c:\users\822\desktop\engine\ventana4\ventana4\graphics.h(35): note: vea la declaración de 'VertexBufferManager<CUSTOMVERTEXTEXTURE,258>'
+c:\users\822\desktop\engine\ventana4\ventana4\texturemanager.h(11): warning C4251: 'TextureManager::listaTexturas': class 'std::list<Texture *,std::allocator<_Ty>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'TextureManager'
+          with
+          [
+              _Ty=Texture *
+          ]
+  c:\users\822\desktop\engine\ventana4\ventana4\texturemanager.h(11): note: vea la declaración de 'std::list<Texture *,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=Texture *
+          ]
+c:\users\822\desktop\engine\ventana4\ventana4\texturemanager.h(12): warning C4251: 'TextureManager::iterBegin': class 'std::_List_iterator<std::_List_val<std::_List_simple_types<Texture *>>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'TextureManager'
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\list(577): note: vea la declaración de 'std::_List_iterator<std::_List_val<std::_List_simple_types<Texture *>>>'
+c:\users\822\desktop\engine\ventana4\ventana4\texturemanager.h(13): warning C4251: 'TextureManager::iterEnd': class 'std::_List_iterator<std::_List_val<std::_List_simple_types<Texture *>>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'TextureManager'
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\list(577): note: vea la declaración de 'std::_List_iterator<std::_List_val<std::_List_simple_types<Texture *>>>'
+c:\users\822\desktop\engine\ventana4\ventana4\texturemanager.h(14): warning C4251: 'TextureManager::iter': class 'std::_List_iterator<std::_List_val<std::_List_simple_types<Texture *>>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'TextureManager'
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\list(577): note: vea la declaración de 'std::_List_iterator<std::_List_val<std::_List_simple_types<Texture *>>>'
+c:\users\822\desktop\engine\ventana4\ventana4\collisionmanager.h(13): warning C4251: 'CollisionManager::group01': class 'std::list<Entity2D *,std::allocator<_Ty>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'CollisionManager'
+          with
+          [
+              _Ty=Entity2D *
+          ]
+  c:\users\822\desktop\engine\ventana4\ventana4\collisionmanager.h(13): note: vea la declaración de 'std::list<Entity2D *,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=Entity2D *
+          ]
+c:\users\822\desktop\engine\ventana4\ventana4\collisionmanager.h(14): warning C4251: 'CollisionManager::group02': class 'std::list<Entity2D *,std::allocator<_Ty>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'CollisionManager'
+          with
+          [
+              _Ty=Entity2D *
+          ]
+  c:\users\822\desktop\engine\ventana4\ventana4\collisionmanager.h(13): note: vea la declaración de 'std::list<Entity2D *,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=Entity2D *
+          ]
+c:\users\822\desktop\engine\ventana4\ventana4\collisionmanager.h(15): warning C4251: 'CollisionManager::iterBeginGroup01': class 'std::_List_iterator<std::_List_val<std::_List_simple_types<Entity2D *>>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'CollisionManager'
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\list(577): note: vea la declaración de 'std::_List_iterator<std::_List_val<std::_List_simple_types<Entity2D *>>>'
+c:\users\822\desktop\engine\ventana4\ventana4\collisionmanager.h(16): warning C4251: 'CollisionManager::iterBeginGroup02': class 'std::_List_iterator<std::_List_val<std::_List_simple_types<Entity2D *>>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'CollisionManager'
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\list(577): note: vea la declaración de 'std::_List_iterator<std::_List_val<std::_List_simple_types<Entity2D *>>>'
+c:\users\822\desktop\engine\ventana4\ventana4\collisionmanager.h(17): warning C4251: 'CollisionManager::iterEndGroup01': class 'std::_List_iterator<std::_List_val<std::_List_simple_types<Entity2D *>>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'CollisionManager'
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\list(577): note: vea la declaración de 'std::_List_iterator<std::_List_val<std::_List_simple_types<Entity2D *>>>'
+c:\users\822\desktop\engine\ventana4\ventana4\collisionmanager.h(18): warning C4251: 'CollisionManager::iterEndGroup02': class 'std::_List_iterator<std::_List_val<std::_List_simple_types<Entity2D *>>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'CollisionManager'
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\list(577): note: vea la declaración de 'std::_List_iterator<std::_List_val<std::_List_simple_types<Entity2D *>>>'
+c:\users\822\desktop\engine\ventana4\ventana4\collisionmanager.h(19): warning C4251: 'CollisionManager::iter01': class 'std::_List_iterator<std::_List_val<std::_List_simple_types<Entity2D *>>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'CollisionManager'
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\list(577): note: vea la declaración de 'std::_List_iterator<std::_List_val<std::_List_simple_types<Entity2D *>>>'
+c:\users\822\desktop\engine\ventana4\ventana4\collisionmanager.h(20): warning C4251: 'CollisionManager::iter02': class 'std::_List_iterator<std::_List_val<std::_List_simple_types<Entity2D *>>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'CollisionManager'
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\list(577): note: vea la declaración de 'std::_List_iterator<std::_List_val<std::_List_simple_types<Entity2D *>>>'
+  Generando código...
   Eljuego.vcxproj -> C:\Users\822\Desktop\Engine\Ventana4\x64\Debug\Eljuego.exe
   Eljuego.vcxproj -> C:\Users\822\Desktop\Engine\Ventana4\x64\Debug\Eljuego.pdb (Full PDB)

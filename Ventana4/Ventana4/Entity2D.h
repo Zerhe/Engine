@@ -20,6 +20,8 @@ public:
 	float _y = 0;
 	float _z = 0;;
 	float _angle = 0;
+	float _width = 0;
+	float _height = 0;
 	float _sX = 1;
 	float _sY = 1;
 	float _sZ = 1;

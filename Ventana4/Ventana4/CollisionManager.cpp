@@ -15,6 +15,16 @@ bool CollisionManager::Register(Entity2D* entity, int group)
 }
 bool CollisionManager::UnRegister(Entity2D* entity, int group)
 {
+	switch (group)
+	{
+	case 1:
+		
+		break;
+	case 2:
+		
+		break;
+	}
+	return true;
 	return true;
 }
 void CollisionManager::CheckCollision()

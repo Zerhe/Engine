@@ -1,6 +1,6 @@
 #include "Sprite.h"
 
-Sprite::Sprite(Graphics* graficos, TextureManager* textureManager, float x, float y, float z, float angle, float sX, float sY, float sZ, CollType collType, float r, LPCWSTR stringTexture, float textureWidth, float textureHeight)
+Sprite::Sprite(Graphics* graficos, TextureManager* textureManager, float x, float y, float z, float width, float height, float angle, CollType collType, float r, LPCWSTR stringTexture, float textureWidth, float textureHeight)
 {
 	_graficos = graficos;
 	_textureManager = textureManager;
@@ -9,21 +9,23 @@ Sprite::Sprite(Graphics* graficos, TextureManager* textureManager, float x, floa
 	_y = y;
 	_z = z;
 	_angle = angle;
-	_sX = sX;
-	_sY = sY;
-	_sZ = sZ;
+	_sX = 1;
+	_sY = 1;
+	_sZ = 1;
 	_collType = collType;
 	_frame = 0;
-	_collWidth = _textureWidth = textureWidth;
-	_collHeight = _textureHeight = textureHeight;
+	_collWidth = _width = width;
+	_collHeight = _height = height;
+	_textureWidth = textureWidth;
+	_textureHeight = textureHeight;
 	if(collType == Circle)
 		_r = r;
 
 	_vertices = new CUSTOMVERTEXTEXTURE[4];
-	_vertices[0] = { 50.0f, 200.0f, 0.5f, 0.0f, 1.0f };
-	_vertices[1] = { 650.0f, 200.0f, 0.5f, 1.0f, 1.0f } ;
-	_vertices[2] = { 50.0f, 500.0f, 0.5f, 0.0f, 0.0f } ;
-	_vertices[3] = { 650.0f, 500.0f, 0.5f, 1.0f, 0.0f };
+	_vertices[0] = { -_width / 2.0f, -_height / 2.0f, 0.5f, 0.0f, 1.0f };
+	_vertices[1] = { _width / 2.0f, -_height / 2.0f, 0.5f, 1.0f, 1.0f } ;
+	_vertices[2] = { -_width / 2.0f, _height / 2.0f, 0.5f, 0.0f, 0.0f } ;
+	_vertices[3] = { _width / 2.0f, _height / 2.0f, 0.5f, 1.0f, 0.0f };
 }
 void Sprite::Draw()
 {
@@ -36,13 +38,13 @@ void Sprite::Draw()
 }
 void Sprite::SetUv(float x, float y, float width, float height, int framesAncho)
 {
-	_collWidth = width;
-	_collHeight = height;
+	_collWidth = _width = width;
+	_collHeight = _height = height;
 
-	_vertices[0] = { x, y, 0.5f, width / _textureWidth * (_frame % framesAncho ), 1.0f };
-	_vertices[1] = { x + width, y, 0.5f, width/_textureWidth * ((_frame + 1) % framesAncho), 1.0f };
-	_vertices[2] = { x, y + height, 0.5f, width / _textureWidth * (_frame % framesAncho), 0.0f };
-	_vertices[3] = { x + width, y + height, 0.5f, width/_textureWidth * ((_frame + 1) % framesAncho), 0.0f };
+	_vertices[0] = { -width / 2.0f, -height / 2.0f, 0.5f, width / _textureWidth * (_frame % framesAncho ), 1.0f };
+	_vertices[1] = { width / 2.0f, -height / 2.0f, 0.5f, width/_textureWidth * ((_frame + 1) % framesAncho), 1.0f };
+	_vertices[2] = { -width / 2.0f, height / 2.0f, 0.5f, width / _textureWidth * (_frame % framesAncho), 0.0f };
+	_vertices[3] = { width / 2.0f, height / 2.0f, 0.5f, width/_textureWidth * ((_frame + 1) % framesAncho), 0.0f };
 }
 void Sprite::LaterFrame()
 {
@@ -50,5 +52,5 @@ void Sprite::LaterFrame()
 }
 void Sprite::OnCollision(Entity2D *entidad)
 {
-
+	_x++;
 }
