@@ -35,17 +35,16 @@ void Game::loop() {
 			if (msg.message == WM_QUIT)
 				done = true;			// ALT-F4
 		}
-		else
-		{
-			onUpdate();
-			_collisionManager->CheckCollision();
-			_graficos->Clear();
-			_graficos->Begin();
-			onDraw();
-			_graficos->End();
-			_graficos->Present();
-			done = !onUpdate();
-		}
+		
+		onUpdate();
+		_collisionManager->CheckCollision();
+		_graficos->Clear();
+		_graficos->Begin();
+		onDraw();
+		_graficos->End();
+		_graficos->Present();
+		done = !onUpdate();
+
 		_timeMeter->Measure();
 	}
 }

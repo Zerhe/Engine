@@ -11,9 +11,10 @@ using namespace std;
 class PlayState : public Game {
 	Sprite* _sprite;
 	Sprite* _sprite2;
-	Sprite* _sprite3;
+	Sprite* _wolf;
 	
 	int _contador = 0;
+	double accumTime = 0.0;
 
 protected:
 	bool onInit();

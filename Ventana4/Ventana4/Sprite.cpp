@@ -42,9 +42,9 @@ void Sprite::SetUv(float x, float y, float width, float height, int framesAncho)
 	_collHeight = _height = height;
 
 	_vertices[0] = { -width / 2.0f, -height / 2.0f, 0.5f, width / _textureWidth * (_frame % framesAncho ), 1.0f };
-	_vertices[1] = { width / 2.0f, -height / 2.0f, 0.5f, width/_textureWidth * ((_frame + 1) % framesAncho), 1.0f };
+	_vertices[1] = { width / 2.0f, -height / 2.0f, 0.5f, width/_textureWidth * ((_frame ) % framesAncho) + (width / _textureWidth), 1.0f };
 	_vertices[2] = { -width / 2.0f, height / 2.0f, 0.5f, width / _textureWidth * (_frame % framesAncho), 0.0f };
-	_vertices[3] = { width / 2.0f, height / 2.0f, 0.5f, width/_textureWidth * ((_frame + 1) % framesAncho), 0.0f };
+	_vertices[3] = { width / 2.0f, height / 2.0f, 0.5f, width/_textureWidth * ((_frame ) % framesAncho) + (width / _textureWidth), 0.0f };
 }
 void Sprite::LaterFrame()
 {
