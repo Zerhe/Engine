@@ -23,5 +23,6 @@ public:
 	void SetUv(float x, float y, float width, float height, int framesAncho);
 	void LaterFrame();
 	void OnCollision(Entity2D *entidad);
+	void Penetration(Entity2D *entidad);
 };
 #endif

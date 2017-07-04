@@ -7,6 +7,8 @@ bool PlayState::onInit()
 	_wolf = new Sprite(_graficos, _textureManager, 400.0f, 500.0f, 0.0f, 200.0f, 200.0f, 0.0f, Square, 0.0f, L"../Wolf.png", 800.0f, 772.0f);
 	_collisionManager->Register(_sprite, 1);
 	_collisionManager->Register(_sprite2, 2);
+	_sprite->_inamovible = false;
+	_sprite2->_inamovible = false;
 
 	return true;
 }
