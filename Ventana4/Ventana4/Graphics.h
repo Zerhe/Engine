@@ -52,6 +52,7 @@ public:
 	 void Scaling(float sx, float sy, float sz);
 	 LPDIRECT3DTEXTURE9 LoadTexture(LPCWSTR stringTexture);
 	 void BindTexture(LPDIRECT3DTEXTURE9 textura);
+	 void SetTransformCamera(D3DTRANSFORMSTATETYPE state, D3DMATRIX *matrix);
 };
 #endif 
 

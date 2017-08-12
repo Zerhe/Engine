@@ -60,6 +60,10 @@ void Graphics::Present() {
 	if (pd3dDevice)
 		pd3dDevice->Present(NULL, NULL, NULL, NULL);
 }
+void Graphics::SetTransformCamera(D3DTRANSFORMSTATETYPE state, D3DMATRIX *matrix)
+{
+	pd3dDevice->SetTransform(state, matrix);
+}
 bool Graphics::SetupScene()
 {
 	HRESULT hRes;
