@@ -104,8 +104,8 @@ bool Graphics::SetupScene()
 	D3DXMATRIX mProjectionMatrix;
 	float fAspectRatio = (float)_viewport.Width / _viewport.Height;
 
-	//D3DXMatrixPerspectiveFovLH(&mProjectionMatrix, D3DX_PI/4.0f, fAspectRatio, 1.0f, 1000.0f);
-	D3DXMatrixOrthoLH(&mProjectionMatrix, (float)_viewport.Width, (float)_viewport.Height, -25.0f, 25.0f);
+	D3DXMatrixPerspectiveFovLH(&mProjectionMatrix, D3DX_PI/4.0f, fAspectRatio, 1.0f, 1000.0f);
+	//D3DXMatrixOrthoLH(&mProjectionMatrix, (float)_viewport.Width, (float)_viewport.Height, -25.0f, 25.0f);
 	hRes = pd3dDevice->SetTransform(D3DTS_PROJECTION, &mProjectionMatrix);
 
 	if (FAILED(hRes)) {

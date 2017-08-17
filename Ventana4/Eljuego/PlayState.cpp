@@ -2,7 +2,7 @@
 
 bool PlayState::onInit()
 {
-	_camera = new Camera(_graficos);
+	_camera = new Camera(_graficos, 800.0f, 600.0f);
 	_sprite = new Sprite(_graficos, _textureManager, 500.0f, 200.0f, 0.0f, 200.0f, 312.0f, 0.0f, Square, 0.0f, L"../Walk2.png", 2000.0f, 312.0f);
 	_sprite2 = new Sprite(_graficos, _textureManager, 150.0f, 200.0f, 0.0f, 200.0f, 312.0f, 0.0f, Square, 0.0f, L"../Walk2.png", 2000.0f, 312.0f);
 	_wolf = new Sprite(_graficos, _textureManager, 400.0f, 500.0f, 0.0f, 200.0f, 200.0f, 0.0f, Square, 0.0f, L"../Wolf.png", 800.0f, 772.0f);
@@ -15,6 +15,8 @@ bool PlayState::onInit()
 }
 void PlayState::onDraw() 
 {
+	if (_camera)
+		_camera->Draw();
 	if (_sprite)
 		_sprite->Draw();
 	if (_sprite2)
@@ -50,9 +52,9 @@ bool PlayState::onUpdate()
 		_sprite2->LaterFrame();
 	}
 	if (_contador == 150)
-		_camera->setCamera('O', 4.0f, -25.0f, 25.0f);
+		_camera->SetCamera('O', 4.0f, -25.0f, 25.0f);
 
-	
+	_camera->_x-= 10.0 * _timeMeter->GetDT();
 	_sprite->_x-= 10.0 * _timeMeter->GetDT();
 	if (_sprite->_x < -1000)
 		_sprite->_x = 800;
