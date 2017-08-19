@@ -51,10 +51,12 @@ bool PlayState::onUpdate()
 		_sprite2->SetUv(100.0f, 200.0f, 200.0f, 312.0f, 10);
 		_sprite2->LaterFrame();
 	}
-	if (_contador == 150)
-		_camera->SetCamera('O', 4.0f, -25.0f, 25.0f);
-
-	_camera->_x-= 10.0 * _timeMeter->GetDT();
+	if (_contador == 2)
+	{
+		//_camera->Pitch(1.0f * _timeMeter->GetDT());  Roto en x la camara
+		_contador = 0;
+	}
+	//_camera->_pos.x-= 10.0 * _timeMeter->GetDT();    Muevo en x la camara
 	_sprite->_x-= 10.0 * _timeMeter->GetDT();
 	if (_sprite->_x < -1000)
 		_sprite->_x = 800;
