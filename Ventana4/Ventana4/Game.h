@@ -5,6 +5,7 @@
 #include <string>
 #include "Ventana.h"
 #include "Graphics.h"
+#include "Input.h"
 #include "TextureManager.h"
 #include "TimeMeter.h"
 #include "CollisionManager.h"
@@ -23,6 +24,7 @@ protected:
 	TextureManager* _textureManager;
 	TimeMeter* _timeMeter;
 	CollisionManager* _collisionManager;
+	Input* _input;
 
 	virtual bool onInit() { return true; };
 	virtual bool onUpdate() { return true; };

@@ -7,6 +7,7 @@ bool Game::startup(HINSTANCE hInstance) {
 	_textureManager = new TextureManager();
 	_timeMeter = new TimeMeter();
 	_collisionManager = new CollisionManager();
+	_input = new Input();
 	int _width = 800;
 	int _height = 600;
 
@@ -19,6 +20,7 @@ bool Game::startup(HINSTANCE hInstance) {
 	_graficos->Initialize(_ventanita->getHwnd(), _width, _height);
 	_graficos->SetupScene();
 	_timeMeter->FirstMeasure();
+	_input->Initialize(hInstance, _ventanita->getHwnd());
 	return onInit();
 }
 void Game::loop() {
