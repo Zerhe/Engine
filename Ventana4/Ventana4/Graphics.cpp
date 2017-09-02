@@ -136,7 +136,6 @@ bool Graphics::SetupScene()
 
 	// Deshabilito el stencil
 	pd3dDevice->SetRenderState(D3DRS_STENCILENABLE, FALSE);
-
 	return true;
 }
 void Graphics::DrawShape(CUSTOMVERTEX* vertices, int cantVert)
@@ -148,6 +147,23 @@ void Graphics::DrawSprite(CUSTOMVERTEXTEXTURE* vertices, int cantVert)
 {
 	vertexBufferSprite.Bind();
 	vertexBufferSprite.Draw( vertices, D3DPT_TRIANGLESTRIP, cantVert);
+}
+void Graphics::DrawMesh(CUSTOMVERTEX* vertices, WORD* indices, int cantVert, int cantInd)
+{
+	/*VOID* lockedData = NULL;
+	_vertexBuffer->Lock(0, 0, (void**)&lockedData, 0);
+	memcpy(lockedData, &vertices, sizeof(_vertexBuffer));
+	_vertexBuffer->Unlock();
+
+	_indexBuffer->Lock(0, 0, (void**)&lockedData, 0);
+	memcpy(lockedData, &indices, sizeof(_indexBuffer));
+	_indexBuffer->Unlock();
+
+	pd3dDevice->SetFVF(D3DFVF_CUSTOMVERTEX);
+	pd3dDevice->SetIndices(_indexBuffer);
+	pd3dDevice->SetStreamSource(0, _vertexBuffer, 0, sizeof(CUSTOMVERTEX));
+
+	pd3dDevice->DrawIndexedPrimitive(D3DPT_TRIANGLESTRIP, 0, 0, cantVert, 0, 2);*/
 }
 void Graphics::LoadIdentity()
 {

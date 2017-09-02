@@ -21,7 +21,6 @@ void Shape::Draw()
 {
 	Transform(_graficos);
 	_graficos->BindTexture(NULL);
-
 	_graficos->DrawShape(_vertices, 3);
 
 }

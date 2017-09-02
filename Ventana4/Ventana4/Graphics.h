@@ -29,12 +29,13 @@ class VENTANA4_API Graphics
 	LPDIRECT3DVERTEXBUFFER9 g_pVB = NULL;
 	D3DVIEWPORT9 _viewport;
 	LPDIRECT3D9 pD3D;
-	LPDIRECT3DDEVICE9 pd3dDevice;
+	//LPDIRECT3DDEVICE9 pd3dDevice;
 	D3DCOLOR _clearColor = 0xFF000000;
 	VertexBufferManager <CUSTOMVERTEX, D3DFVF_CUSTOMVERTEX> vertexBufferShape;
 	VertexBufferManager <CUSTOMVERTEXTEXTURE, D3DFVF_CUSTOMVERTEXTEXTURE> vertexBufferSprite;
 
 public:
+	LPDIRECT3DDEVICE9 pd3dDevice;
 	 bool Initialize(HWND wndHandle, int width, int height);
 	 void Shutdown();
 	 void Clear();
@@ -46,6 +47,7 @@ public:
 	 unsigned int GetClearColor() { return _clearColor; }
 	 void DrawShape(CUSTOMVERTEX* vertices, int cantVert);
 	 void DrawSprite(CUSTOMVERTEXTEXTURE* vertices, int cantVert);
+	 void DrawMesh(CUSTOMVERTEX* vertices, WORD* indices, int cantVert, int cantInd);
 	 void LoadIdentity();
 	 void Translate(float x, float y, float z);
 	 void RotationZ(float angle);

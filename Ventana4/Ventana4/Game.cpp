@@ -20,7 +20,7 @@ bool Game::startup(HINSTANCE hInstance) {
 	_graficos->Initialize(_ventanita->getHwnd(), _width, _height);
 	_graficos->SetupScene();
 	_timeMeter->FirstMeasure();
-	_input->Initialize(hInstance, _ventanita->getHwnd());
+	//_input->Initialize(hInstance, _ventanita->getHwnd());
 	return onInit();
 }
 void Game::loop() {

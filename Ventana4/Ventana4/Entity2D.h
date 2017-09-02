@@ -14,9 +14,10 @@ enum CollType
 	Square
 };
 
-class VENTANA4_API Entity2D : public Entity {
+class VENTANA4_API Entity2D : public Entity 
+{
 public:
-	float _x = 0;
+	/*float _x = 0;
 	float _y = 0;
 	float _z = 0;;
 	float _angle = 0;
@@ -24,7 +25,7 @@ public:
 	float _height = 0;
 	float _sX = 1;
 	float _sY = 1;
-	float _sZ = 1;
+	float _sZ = 1;*/
 	float _r = 0;
 	CollType _collType = Circle;
 	float _collWidth = 0;
