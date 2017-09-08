@@ -40,8 +40,8 @@ void Camera::Yaw(float angle)
 	D3DXVec3TransformCoord(&_forward, &_forward, &_matUp);
 	D3DXVec3TransformCoord(&_right, &_right, &_matUp);
 
-	D3DXMatrixLookAtLH(&_matUp, &_pos, &(_pos + _forward), &_up);
-	_graficos->SetTransformCamera(D3DTS_VIEW, &_matUp);
+	D3DXMatrixLookAtLH(&_matView, &_pos, &(_pos + _forward), &_up);
+	_graficos->SetTransformCamera(D3DTS_VIEW, &_matView);
 }
 void Camera::Pitch(float angle)
 {
@@ -50,8 +50,8 @@ void Camera::Pitch(float angle)
 	D3DXVec3TransformCoord(&_forward, &_forward, &_matUp);
 	D3DXVec3TransformCoord(&_up, &_up, &_matUp);
 
-	D3DXMatrixLookAtLH(&_matUp, &_pos, &(_pos + _forward), &_up);
-	_graficos->SetTransformCamera(D3DTS_VIEW, &_matUp);
+	D3DXMatrixLookAtLH(&_matView, &_pos, &(_pos + _forward), &_up);
+	_graficos->SetTransformCamera(D3DTS_VIEW, &_matView);
 }
 void Camera::Roll(float angle)
 {
@@ -60,8 +60,8 @@ void Camera::Roll(float angle)
 	D3DXVec3TransformCoord(&_right, &_right, &_matUp);
 	D3DXVec3TransformCoord(&_up, &_up, &_matUp);
 
-	D3DXMatrixLookAtLH(&_matUp, &_pos, &(_pos + _forward), &_up);
-	_graficos->SetTransformCamera(D3DTS_VIEW, &_matUp);
+	D3DXMatrixLookAtLH(&_matView, &_pos, &(_pos + _forward), &_up);
+	_graficos->SetTransformCamera(D3DTS_VIEW, &_matView);
 }
 void Camera::Draw() 
 {
