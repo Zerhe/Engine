@@ -3,18 +3,22 @@
 #include "Api.h"
 #include "Entity3D.h"
 #include "Graphics.h"
+#include "TextureManager.h"
+#include "Texture.h"
 
 using namespace std;
 
 class VENTANA4_API Mesh : public Entity3D
 {
 	Graphics* _graficos;
-	CUSTOMVERTEX* _vertices;
+	TextureManager* _textureManager;
+	Texture* _texture;
+	CUSTOMVERTEXTEXTURE* _vertices;
 	WORD* _indices;
 	LPDIRECT3DVERTEXBUFFER9	_vertexBuffer;
 	LPDIRECT3DINDEXBUFFER9 _indexBuffer;
 public:
-	Mesh(Graphics *graficos, float x, float y, float z, float width, float height, float depth);
+	Mesh(Graphics* graficos, TextureManager* textureManager, float x, float y, float z, float width, float height, float depth, LPCWSTR stringTexture);
 	void Draw();
 };
 #endif

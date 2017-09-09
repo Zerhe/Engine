@@ -1,7 +1,9 @@
 #include "Mesh.h"
-Mesh::Mesh(Graphics *graficos, float x, float y, float z, float width, float height, float depth)
+Mesh::Mesh(Graphics* graficos, TextureManager* textureManager, float x, float y, float z, float width, float height, float depth, LPCWSTR stringTexture)
 {
 	_graficos = graficos;
+	_textureManager = textureManager;
+	_texture = _textureManager->CreateTexture(stringTexture, _graficos);
 	_x = x;
 	_y = y;
 	_z = z;
@@ -9,16 +11,16 @@ Mesh::Mesh(Graphics *graficos, float x, float y, float z, float width, float hei
 	_height = height;
 	_depth = depth;
 
-	_vertices = new CUSTOMVERTEX[8];
-	_vertices[0] = { -_width / 2.0f, -_height / 2.0f, -_depth/2, D3DCOLOR_ARGB(255, 255, 0, 255), };
-	_vertices[1] = { _width / 2.0f, -_height / 2.0f, -_depth / 2, D3DCOLOR_ARGB(255, 255, 255, 0), };
-	_vertices[2] = { -_width / 2.0f, _height / 2.0f, -_depth / 2, D3DCOLOR_ARGB(255, 0, 255, 255), };
-	_vertices[3] = { _width / 2.0f, _height / 2.0f, -_depth / 2, D3DCOLOR_ARGB(255, 0, 255, 255), };
+	_vertices = new CUSTOMVERTEXTEXTURE[8];
+	_vertices[0] = { -_width / 2.0f, -_height / 2.0f, -_depth/ 2, 0.0f, 1.0f };
+	_vertices[1] = { _width / 2.0f, -_height / 2.0f, -_depth / 2, 1.0f, 1.0f };
+	_vertices[2] = { -_width / 2.0f, _height / 2.0f, -_depth / 2, 0.0f, 0.0f };
+	_vertices[3] = { _width / 2.0f, _height / 2.0f, -_depth / 2, 1.0f, 0.0f };
 
-	_vertices[4] = { -_width / 2.0f, -_height / 2.0f, _depth / 2, D3DCOLOR_ARGB(255, 255, 0, 255), };
-	_vertices[5] = { _width / 2.0f, -_height / 2.0f, _depth / 2, D3DCOLOR_ARGB(255, 255, 255, 0), };
-	_vertices[6] = { -_width / 2.0f, _height / 2.0f, _depth / 2, D3DCOLOR_ARGB(255, 0, 255, 255), };
-	_vertices[7] = { _width / 2.0f, _height / 2.0f, _depth / 2, D3DCOLOR_ARGB(255, 0, 255, 255), };
+	_vertices[4] = { -_width / 2.0f, -_height / 2.0f, _depth / 2, 0.0f, 1.0f };
+	_vertices[5] = { _width / 2.0f, -_height / 2.0f, _depth / 2, 1.0f, 1.0f };
+	_vertices[6] = { -_width / 2.0f, _height / 2.0f, _depth / 2, 0.0f, 0.0f };
+	_vertices[7] = { _width / 2.0f, _height / 2.0f, _depth / 2, 1.0f, 0.0f };
 
 	_indices = new WORD[36];
 	_indices[0] = 0;
@@ -69,12 +71,12 @@ Mesh::Mesh(Graphics *graficos, float x, float y, float z, float width, float hei
 	_indices[34] = 6;
 	_indices[35] = 7;
 
-	_graficos->pd3dDevice->CreateVertexBuffer(8 * sizeof(CUSTOMVERTEX), 0, D3DFVF_CUSTOMVERTEX, D3DPOOL_MANAGED, &_vertexBuffer, NULL);
+	_graficos->pd3dDevice->CreateVertexBuffer(8 * sizeof(CUSTOMVERTEXTEXTURE), 0, D3DFVF_CUSTOMVERTEX, D3DPOOL_MANAGED, &_vertexBuffer, NULL);
 	_graficos->pd3dDevice->CreateIndexBuffer(36 * sizeof(WORD), 0, D3DFMT_INDEX16, D3DPOOL_MANAGED, &_indexBuffer, NULL);
 
 	VOID* lockedData = NULL;
-	_vertexBuffer->Lock(0, 8*sizeof(CUSTOMVERTEX), (void**)&lockedData, 0);
-	memcpy(lockedData, _vertices, 8*sizeof(CUSTOMVERTEX));
+	_vertexBuffer->Lock(0, 8*sizeof(CUSTOMVERTEXTEXTURE), (void**)&lockedData, 0);
+	memcpy(lockedData, _vertices, 8*sizeof(CUSTOMVERTEXTEXTURE));
 	_vertexBuffer->Unlock();
 
 	_indexBuffer->Lock(0, 36*sizeof(WORD), (void**)&lockedData, 0);
@@ -83,11 +85,12 @@ Mesh::Mesh(Graphics *graficos, float x, float y, float z, float width, float hei
 }
 void Mesh::Draw() {
 	Transform(_graficos);
-	_graficos->BindTexture(NULL);
 
-	_graficos->pd3dDevice->SetFVF(D3DFVF_CUSTOMVERTEX);
+	_graficos->BindTexture(_texture->getTexture());
+
+	_graficos->pd3dDevice->SetFVF(D3DFVF_CUSTOMVERTEXTEXTURE);
 	_graficos->pd3dDevice->SetIndices(_indexBuffer);
-	_graficos->pd3dDevice->SetStreamSource(0, _vertexBuffer, 0, sizeof(CUSTOMVERTEX));
+	_graficos->pd3dDevice->SetStreamSource(0, _vertexBuffer, 0, sizeof(CUSTOMVERTEXTEXTURE));
 
 	_graficos->pd3dDevice->DrawIndexedPrimitive(D3DPT_TRIANGLELIST, 0, 0, 8, 0, 12);
 }
