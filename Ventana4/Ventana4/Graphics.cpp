@@ -180,6 +180,20 @@ void Graphics::Translate(float x, float y, float z)
 	pd3dDevice->MultiplyTransform(D3DTS_WORLDMATRIX(0), &matTranslate);
 
 }
+void Graphics::RotationX(float angle)
+{
+	D3DXMATRIX matRotate;
+
+	D3DXMatrixRotationX(&matRotate, D3DXToRadian(angle));
+	pd3dDevice->MultiplyTransform(D3DTS_WORLDMATRIX(0), &matRotate);
+}
+void Graphics::RotationY(float angle)
+{
+	D3DXMATRIX matRotate;
+
+	D3DXMatrixRotationY(&matRotate, D3DXToRadian(angle));
+	pd3dDevice->MultiplyTransform(D3DTS_WORLDMATRIX(0), &matRotate);
+}
 void Graphics::RotationZ(float angle) 
 {
 	D3DXMATRIX matRotate;

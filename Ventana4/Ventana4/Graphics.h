@@ -50,6 +50,8 @@ public:
 	 void DrawMesh(CUSTOMVERTEX* vertices, WORD* indices, int cantVert, int cantInd);
 	 void LoadIdentity();
 	 void Translate(float x, float y, float z);
+	 void RotationX(float angle);
+	 void RotationY(float angle);
 	 void RotationZ(float angle);
 	 void Scaling(float sx, float sy, float sz);
 	 LPDIRECT3DTEXTURE9 LoadTexture(LPCWSTR stringTexture);

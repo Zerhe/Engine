@@ -26,6 +26,7 @@ public:
 	float _sX = 1;
 	float _sY = 1;
 	float _sZ = 1;*/
+	float _angle = 0;
 	float _r = 0;
 	CollType _collType = Circle;
 	float _collWidth = 0;

@@ -14,7 +14,7 @@ class VENTANA4_API Mesh : public Entity3D
 	LPDIRECT3DVERTEXBUFFER9	_vertexBuffer;
 	LPDIRECT3DINDEXBUFFER9 _indexBuffer;
 public:
-	Mesh(Graphics *graficos, float x, float y, float z, float angle, float width, float height, float depth);
+	Mesh(Graphics *graficos, float x, float y, float z, float width, float height, float depth);
 	void Draw();
 };
 #endif
