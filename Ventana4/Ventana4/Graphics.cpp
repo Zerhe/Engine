@@ -25,7 +25,7 @@ bool Graphics::Initialize(HWND wndHandle, int width, int height) {
 	d3dpp.hDeviceWindow = wndHandle;
 	// Create a default DirectX device
 	if (FAILED(pD3D->CreateDevice(D3DADAPTER_DEFAULT,
-		D3DDEVTYPE_REF,
+		D3DDEVTYPE_HAL,
 		wndHandle,
 		D3DCREATE_HARDWARE_VERTEXPROCESSING,
 		&d3dpp,
@@ -117,7 +117,7 @@ bool Graphics::SetupScene()
 	//pd3dDevice->SetRenderState(D3DRS_SHADEMODE, D3DSHADE_FLAT);
 	//pd3dDevice->SetRenderState(D3DRS_FILLMODE, D3DFILL_WIREFRAME);
 
-	pd3dDevice->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE); // D3DCULL_CCW
+	pd3dDevice->SetRenderState(D3DRS_CULLMODE, D3DCULL_CW); // D3DCULL_CCW
 
 
 															// TEMPORAL

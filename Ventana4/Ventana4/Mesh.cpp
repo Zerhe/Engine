@@ -11,72 +11,63 @@ Mesh::Mesh(Graphics* graficos, TextureManager* textureManager, float x, float y,
 	_height = height;
 	_depth = depth;
 
-	_vertices = new CUSTOMVERTEXTEXTURE[8];
+	LoadOBJ();
+
+	/*  http://www.opengl-tutorial.org/es/beginners-tutorials/tutorial-7-model-loading/#cargando-el-obj tutorial loadOBJ
+		CUBO  
+	_vertices = new CUSTOMVERTEXTEXTURE[24];
 	_vertices[0] = { -_width / 2.0f, -_height / 2.0f, -_depth/ 2, 0.0f, 1.0f };
 	_vertices[1] = { _width / 2.0f, -_height / 2.0f, -_depth / 2, 1.0f, 1.0f };
 	_vertices[2] = { -_width / 2.0f, _height / 2.0f, -_depth / 2, 0.0f, 0.0f };
 	_vertices[3] = { _width / 2.0f, _height / 2.0f, -_depth / 2, 1.0f, 0.0f };
 
-	_vertices[4] = { -_width / 2.0f, -_height / 2.0f, _depth / 2, 0.0f, 1.0f };
+	_vertices[4] = { _width / 2.0f, -_height / 2.0f, -_depth / 2, 0.0f, 1.0f };	
 	_vertices[5] = { _width / 2.0f, -_height / 2.0f, _depth / 2, 1.0f, 1.0f };
-	_vertices[6] = { -_width / 2.0f, _height / 2.0f, _depth / 2, 0.0f, 0.0f };
+	_vertices[6] = { _width / 2.0f, _height / 2.0f, -_depth / 2, 0.0f, 0.0f };
 	_vertices[7] = { _width / 2.0f, _height / 2.0f, _depth / 2, 1.0f, 0.0f };
 
-	_indices = new WORD[36];
-	_indices[0] = 0;
-	_indices[1] = 1;
-	_indices[2] = 2;
+	_vertices[8] = { _width / 2.0f, -_height / 2.0f, _depth / 2, 0.0f, 1.0f };
+	_vertices[9] = { -_width / 2.0f, -_height / 2.0f, _depth / 2, 1.0f, 1.0f };
+	_vertices[10] = { _width / 2.0f, _height / 2.0f, _depth / 2, 0.0f, 0.0f };
+	_vertices[11] = { -_width / 2.0f, _height / 2.0f, _depth / 2, 1.0f, 0.0f };
 
-	_indices[3] = 1;
-	_indices[4] = 2;
-	_indices[5] = 3;
+	_vertices[12] = { -_width / 2.0f, -_height / 2.0f, _depth / 2, 0.0f, 1.0f };
+	_vertices[13] = { -_width / 2.0f, -_height / 2.0f, -_depth / 2, 1.0f, 1.0f };
+	_vertices[14] = { -_width / 2.0f, _height / 2.0f, _depth / 2, 0.0f, 0.0f };
+	_vertices[15] = { -_width / 2.0f, _height / 2.0f, -_depth / 2, 1.0f, 0.0f };
 
-	_indices[6] = 1;
-	_indices[7] = 5;
-	_indices[8] = 3;
+	_vertices[16] = { -_width / 2.0f, _height / 2.0f, -_depth / 2, 0.0f, 1.0f };
+	_vertices[17] = { _width / 2.0f, _height / 2.0f, -_depth / 2, 1.0f, 1.0f };
+	_vertices[18] = { -_width / 2.0f, _height / 2.0f, _depth / 2, 0.0f, 0.0f };
+	_vertices[19] = { _width / 2.0f, _height / 2.0f, _depth / 2, 1.0f, 0.0f };
 
-	_indices[9] = 5;
-	_indices[10] = 3;
-	_indices[11] = 7;
+	_vertices[20] = { -_width / 2.0f, -_height / 2.0f, _depth / 2, 0.0f, 1.0f };
+	_vertices[21] = { _width / 2.0f, -_height / 2.0f, _depth / 2, 1.0f, 1.0f };
+	_vertices[22] = { -_width / 2.0f, -_height / 2.0f, -_depth / 2, 0.0f, 0.0f };
+	_vertices[23] = { _width / 2.0f, -_height / 2.0f, -_depth / 2, 1.0f, 0.0f };
 
-	_indices[12] = 4;
-	_indices[13] = 5;
-	_indices[14] = 6;
+	_indices = new WORD[36]
+	{
+		0,1,2,
+		2,1,3,
+		4,5,6,
+		6,5,7,
+		8,9,10,
+		10,9,11,
+		12,13,14,
+		14,13,15,
+		16,17,18,
+		18,17,19,
+		20,21,22,
+		22,21,23,
+	};*/
 
-	_indices[15] = 5;
-	_indices[16] = 6;
-	_indices[17] = 7;
-
-	_indices[18] = 4;
-	_indices[19] = 0;
-	_indices[20] = 6;
-
-	_indices[21] = 0;
-	_indices[22] = 6;
-	_indices[23] = 2;
-
-	_indices[24] = 0;
-	_indices[25] = 1;
-	_indices[26] = 4;
-
-	_indices[27] = 1;
-	_indices[28] = 4;
-	_indices[29] = 5;
-
-	_indices[30] = 2;
-	_indices[31] = 3;
-	_indices[32] = 6;
-
-	_indices[33] = 3;
-	_indices[34] = 6;
-	_indices[35] = 7;
-
-	_graficos->pd3dDevice->CreateVertexBuffer(8 * sizeof(CUSTOMVERTEXTEXTURE), 0, D3DFVF_CUSTOMVERTEX, D3DPOOL_MANAGED, &_vertexBuffer, NULL);
+	_graficos->pd3dDevice->CreateVertexBuffer(24 * sizeof(CUSTOMVERTEXTEXTURE), 0, D3DFVF_CUSTOMVERTEXTEXTURE, D3DPOOL_MANAGED, &_vertexBuffer, NULL);
 	_graficos->pd3dDevice->CreateIndexBuffer(36 * sizeof(WORD), 0, D3DFMT_INDEX16, D3DPOOL_MANAGED, &_indexBuffer, NULL);
 
 	VOID* lockedData = NULL;
-	_vertexBuffer->Lock(0, 8*sizeof(CUSTOMVERTEXTEXTURE), (void**)&lockedData, 0);
-	memcpy(lockedData, _vertices, 8*sizeof(CUSTOMVERTEXTEXTURE));
+	_vertexBuffer->Lock(0, 24*sizeof(CUSTOMVERTEXTEXTURE), (void**)&lockedData, 0);
+	memcpy(lockedData, _vertices, 24*sizeof(CUSTOMVERTEXTEXTURE));
 	_vertexBuffer->Unlock();
 
 	_indexBuffer->Lock(0, 36*sizeof(WORD), (void**)&lockedData, 0);
@@ -92,5 +83,5 @@ void Mesh::Draw() {
 	_graficos->pd3dDevice->SetIndices(_indexBuffer);
 	_graficos->pd3dDevice->SetStreamSource(0, _vertexBuffer, 0, sizeof(CUSTOMVERTEXTEXTURE));
 
-	_graficos->pd3dDevice->DrawIndexedPrimitive(D3DPT_TRIANGLELIST, 0, 0, 8, 0, 12);
+	_graficos->pd3dDevice->DrawIndexedPrimitive(D3DPT_TRIANGLELIST, 0, 0, 24, 0, 12);
 }
