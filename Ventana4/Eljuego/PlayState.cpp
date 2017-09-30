@@ -6,7 +6,7 @@ bool PlayState::onInit()
 	_sprite = new Sprite(_graficos, _textureManager, 500.0f, 200.0f, 0.0f, 200.0f, 312.0f, 0.0f, Square, 0.0f, L"../Walk2.png", 2000.0f, 312.0f);
 	_sprite2 = new Sprite(_graficos, _textureManager, 150.0f, 200.0f, 0.0f, 200.0f, 312.0f, 0.0f, Square, 0.0f, L"../Walk2.png", 2000.0f, 312.0f);
 	_wolf = new Sprite(_graficos, _textureManager, 400.0f, 500.0f, 0.0f, 200.0f, 200.0f, 0.0f, Square, 0.0f, L"../Wolf.png", 800.0f, 772.0f);
-	_mesh = new Mesh(_graficos, _textureManager, 50.0f, 100.0f, 50.0f, 100.0f, 100.0f, 100.0f, L"../Estrella.png");
+	_mesh = new Mesh(_graficos, _textureManager, 50.0f, 100.0f, 50.0f, 100.0f, 100.0f, 100.0f, L"../Estrella.png", "../Cube.obj");
 	_collisionManager->Register(_sprite, 1);
 	_collisionManager->Register(_sprite2, 2);
 	_sprite->_inamovible = false;

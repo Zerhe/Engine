@@ -15,11 +15,14 @@ class VENTANA4_API Mesh : public Entity3D
 	TextureManager* _textureManager;
 	Texture* _texture;
 	vector <CUSTOMVERTEXTEXTURE>* _vertices;
-	vector <WORD>* _indices;
+	vector< WORD >* _vertexIndices,* _uvIndices,* _normalIndices;
+	CUSTOMVERTEXTEXTURE* _vertex;
+	WORD* _indexVertex ;
 	LPDIRECT3DVERTEXBUFFER9	_vertexBuffer;
 	LPDIRECT3DINDEXBUFFER9 _indexBuffer;
+	const char * _model;
 public:
-	Mesh(Graphics* graficos, TextureManager* textureManager, float x, float y, float z, float width, float height, float depth, LPCWSTR stringTexture);
+	Mesh(Graphics* graficos, TextureManager* textureManager, float x, float y, float z, float width, float height, float depth, LPCWSTR stringTexture, const char * model);
 	void Draw();
 	bool LoadOBJ();
 };

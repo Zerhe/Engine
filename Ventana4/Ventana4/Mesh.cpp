@@ -1,5 +1,5 @@
 #include "Mesh.h"
-Mesh::Mesh(Graphics* graficos, TextureManager* textureManager, float x, float y, float z, float width, float height, float depth, LPCWSTR stringTexture)
+Mesh::Mesh(Graphics* graficos, TextureManager* textureManager, float x, float y, float z, float width, float height, float depth, LPCWSTR stringTexture, const char * model)
 {
 	_graficos = graficos;
 	_textureManager = textureManager;
@@ -10,68 +10,22 @@ Mesh::Mesh(Graphics* graficos, TextureManager* textureManager, float x, float y,
 	_width = width;
 	_height = height;
 	_depth = depth;
+	_model = model;
 
 	LoadOBJ();
 
-	/*  http://www.opengl-tutorial.org/es/beginners-tutorials/tutorial-7-model-loading/#cargando-el-obj tutorial loadOBJ
-		CUBO  
-	_vertices = new CUSTOMVERTEXTEXTURE[24];
-	_vertices[0] = { -_width / 2.0f, -_height / 2.0f, -_depth/ 2, 0.0f, 1.0f };
-	_vertices[1] = { _width / 2.0f, -_height / 2.0f, -_depth / 2, 1.0f, 1.0f };
-	_vertices[2] = { -_width / 2.0f, _height / 2.0f, -_depth / 2, 0.0f, 0.0f };
-	_vertices[3] = { _width / 2.0f, _height / 2.0f, -_depth / 2, 1.0f, 0.0f };
+	/*  http://www.opengl-tutorial.org/es/beginners-tutorials/tutorial-7-model-loading/#cargando-el-obj tutorial loadOBJ*/
 
-	_vertices[4] = { _width / 2.0f, -_height / 2.0f, -_depth / 2, 0.0f, 1.0f };	
-	_vertices[5] = { _width / 2.0f, -_height / 2.0f, _depth / 2, 1.0f, 1.0f };
-	_vertices[6] = { _width / 2.0f, _height / 2.0f, -_depth / 2, 0.0f, 0.0f };
-	_vertices[7] = { _width / 2.0f, _height / 2.0f, _depth / 2, 1.0f, 0.0f };
-
-	_vertices[8] = { _width / 2.0f, -_height / 2.0f, _depth / 2, 0.0f, 1.0f };
-	_vertices[9] = { -_width / 2.0f, -_height / 2.0f, _depth / 2, 1.0f, 1.0f };
-	_vertices[10] = { _width / 2.0f, _height / 2.0f, _depth / 2, 0.0f, 0.0f };
-	_vertices[11] = { -_width / 2.0f, _height / 2.0f, _depth / 2, 1.0f, 0.0f };
-
-	_vertices[12] = { -_width / 2.0f, -_height / 2.0f, _depth / 2, 0.0f, 1.0f };
-	_vertices[13] = { -_width / 2.0f, -_height / 2.0f, -_depth / 2, 1.0f, 1.0f };
-	_vertices[14] = { -_width / 2.0f, _height / 2.0f, _depth / 2, 0.0f, 0.0f };
-	_vertices[15] = { -_width / 2.0f, _height / 2.0f, -_depth / 2, 1.0f, 0.0f };
-
-	_vertices[16] = { -_width / 2.0f, _height / 2.0f, -_depth / 2, 0.0f, 1.0f };
-	_vertices[17] = { _width / 2.0f, _height / 2.0f, -_depth / 2, 1.0f, 1.0f };
-	_vertices[18] = { -_width / 2.0f, _height / 2.0f, _depth / 2, 0.0f, 0.0f };
-	_vertices[19] = { _width / 2.0f, _height / 2.0f, _depth / 2, 1.0f, 0.0f };
-
-	_vertices[20] = { -_width / 2.0f, -_height / 2.0f, _depth / 2, 0.0f, 1.0f };
-	_vertices[21] = { _width / 2.0f, -_height / 2.0f, _depth / 2, 1.0f, 1.0f };
-	_vertices[22] = { -_width / 2.0f, -_height / 2.0f, -_depth / 2, 0.0f, 0.0f };
-	_vertices[23] = { _width / 2.0f, -_height / 2.0f, -_depth / 2, 1.0f, 0.0f };
-
-	_indices = new WORD[36]
-	{
-		0,1,2,
-		2,1,3,
-		4,5,6,
-		6,5,7,
-		8,9,10,
-		10,9,11,
-		12,13,14,
-		14,13,15,
-		16,17,18,
-		18,17,19,
-		20,21,22,
-		22,21,23,
-	};*/
-
-	_graficos->pd3dDevice->CreateVertexBuffer(24 * sizeof(CUSTOMVERTEXTEXTURE), 0, D3DFVF_CUSTOMVERTEXTEXTURE, D3DPOOL_MANAGED, &_vertexBuffer, NULL);
-	_graficos->pd3dDevice->CreateIndexBuffer(36 * sizeof(WORD), 0, D3DFMT_INDEX16, D3DPOOL_MANAGED, &_indexBuffer, NULL);
+	_graficos->pd3dDevice->CreateVertexBuffer(_vertices->max_size * sizeof(CUSTOMVERTEXTEXTURE), 0, D3DFVF_CUSTOMVERTEXTEXTURE, D3DPOOL_MANAGED, &_vertexBuffer, NULL);
+	_graficos->pd3dDevice->CreateIndexBuffer(_vertexIndices->max_size * sizeof(WORD), 0, D3DFMT_INDEX16, D3DPOOL_MANAGED, &_indexBuffer, NULL);
 
 	VOID* lockedData = NULL;
-	_vertexBuffer->Lock(0, 24*sizeof(CUSTOMVERTEXTEXTURE), (void**)&lockedData, 0);
-	memcpy(lockedData, _vertices, 24*sizeof(CUSTOMVERTEXTEXTURE));
+	_vertexBuffer->Lock(0, 5 *sizeof(CUSTOMVERTEXTEXTURE), (void**)&lockedData, 0);
+	memcpy(lockedData, _vertex, _vertices->max_size *sizeof(CUSTOMVERTEXTEXTURE));
 	_vertexBuffer->Unlock();
 
-	_indexBuffer->Lock(0, 36*sizeof(WORD), (void**)&lockedData, 0);
-	memcpy(lockedData, _indices, 36*sizeof(WORD));
+	_indexBuffer->Lock(0, _indexVertex *sizeof(WORD), (void**)&lockedData, 0);
+	memcpy(lockedData, _indexVertex, _vertexIndices->max_size *sizeof(WORD));
 	_indexBuffer->Unlock();
 }
 void Mesh::Draw() {
@@ -83,5 +37,55 @@ void Mesh::Draw() {
 	_graficos->pd3dDevice->SetIndices(_indexBuffer);
 	_graficos->pd3dDevice->SetStreamSource(0, _vertexBuffer, 0, sizeof(CUSTOMVERTEXTEXTURE));
 
-	_graficos->pd3dDevice->DrawIndexedPrimitive(D3DPT_TRIANGLELIST, 0, 0, 24, 0, 12);
+	_graficos->pd3dDevice->DrawIndexedPrimitive(D3DPT_TRIANGLELIST, 0, 0, _vertices->max_size, 0, _vertexIndices->max_size/3);
+}
+bool Mesh::LoadOBJ()
+{
+	FILE * file;
+	fopen_s(&file,_model, "r");
+
+	if (file == NULL) {
+		printf("Impossible to open the file !\n");
+		return false;
+	}
+	while (1) 
+	{
+		char lineHeader[128];
+		int res = fscanf_s(file, "%s", lineHeader);
+		if (res == EOF)
+			break;
+
+		if (strcmp(lineHeader, "v") == 0) {
+			CUSTOMVERTEXTEXTURE vertex;
+			fscanf_s(file, "%f %f %f\n", &vertex.x, &vertex.y, &vertex.z);
+			_vertices->push_back(vertex);
+		}
+		else if (strcmp(lineHeader, "vt") == 0) {
+			CUSTOMVERTEXTEXTURE uv;
+			fscanf_s(file, "%f %f\n", &uv.x, &uv.y);
+			_uvs->push_back(uv);
+		}
+		else if (strcmp(lineHeader, "f") == 0)
+		{
+			//std::string vertex1, vertex2, vertex3;
+			unsigned int vertexIndex[3], uvIndex[3], normalIndex[3];
+			int matches = fscanf_s(file, "%d/%d/%d %d/%d/%d %d/%d/%d\n", &vertexIndex[0], &uvIndex[0], &normalIndex[0], &vertexIndex[1], &uvIndex[1], &normalIndex[1], &vertexIndex[2], &uvIndex[2], &normalIndex[2]);
+			if (matches != 9)
+			{
+				printf("File can't be read by our simple parser : ( Try exporting with other options\n");
+				return false;
+			}
+			_vertexIndices->push_back(vertexIndex[0]);
+			_vertexIndices->push_back(vertexIndex[1]);
+			_vertexIndices->push_back(vertexIndex[2]);
+			_uvIndices->push_back(uvIndex[0]);
+			_uvIndices->push_back(uvIndex[1]);
+			_uvIndices->push_back(uvIndex[2]);
+			_normalIndices->push_back(normalIndex[0]);
+			_normalIndices->push_back(normalIndex[1]);
+			_normalIndices->push_back(normalIndex[2]);
+		}
+	}
+	_vertex = new CUSTOMVERTEXTEXTURE[_vertices->size];
+	_indexVertex = new WORD[_vertexIndices->size];
 }
