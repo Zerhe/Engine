@@ -14,8 +14,8 @@ class VENTANA4_API Cube : public Entity3D
 	Graphics* _graficos;
 	TextureManager* _textureManager;
 	Texture* _texture;
-	vector <CUSTOMVERTEXTEXTURE>* _vertices;
-	vector <WORD>* _indices;
+	CUSTOMVERTEXTEXTURE* _vertices;
+	WORD* _indices;
 	LPDIRECT3DVERTEXBUFFER9	_vertexBuffer;
 	LPDIRECT3DINDEXBUFFER9 _indexBuffer;
 public:

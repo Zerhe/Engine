@@ -7,6 +7,7 @@
 #include "../Ventana4/Sprite.h"
 #include "../Ventana4/Mesh.h"
 #include "../Ventana4/Camera.h"
+#include "../Ventana4/Cube.h"
 
 using namespace std;
 
@@ -15,7 +16,7 @@ class PlayState : public Game {
 	Sprite* _sprite;
 	Sprite* _sprite2;
 	Sprite* _wolf;
-	Mesh* _mesh;
+	Cube* _mesh;
 	
 	int _contador = 0;
 	double accumTime = 0.0;

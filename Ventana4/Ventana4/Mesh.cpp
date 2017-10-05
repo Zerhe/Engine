@@ -12,20 +12,20 @@ Mesh::Mesh(Graphics* graficos, TextureManager* textureManager, float x, float y,
 	_depth = depth;
 	_model = model;
 
-	LoadOBJ();
+	//LoadOBJ();
 
 	/*  http://www.opengl-tutorial.org/es/beginners-tutorials/tutorial-7-model-loading/#cargando-el-obj tutorial loadOBJ*/
 
-	_graficos->pd3dDevice->CreateVertexBuffer(_vertices->max_size * sizeof(CUSTOMVERTEXTEXTURE), 0, D3DFVF_CUSTOMVERTEXTEXTURE, D3DPOOL_MANAGED, &_vertexBuffer, NULL);
-	_graficos->pd3dDevice->CreateIndexBuffer(_vertexIndices->max_size * sizeof(WORD), 0, D3DFMT_INDEX16, D3DPOOL_MANAGED, &_indexBuffer, NULL);
+	_graficos->pd3dDevice->CreateVertexBuffer(_vertexSize * sizeof(CUSTOMVERTEXTEXTURE), 0, D3DFVF_CUSTOMVERTEXTEXTURE, D3DPOOL_MANAGED, &_vertexBuffer, NULL);
+	_graficos->pd3dDevice->CreateIndexBuffer(_indexVertexSize * sizeof(WORD), 0, D3DFMT_INDEX16, D3DPOOL_MANAGED, &_indexBuffer, NULL);
 
 	VOID* lockedData = NULL;
-	_vertexBuffer->Lock(0, 5 *sizeof(CUSTOMVERTEXTEXTURE), (void**)&lockedData, 0);
-	memcpy(lockedData, _vertex, _vertices->max_size *sizeof(CUSTOMVERTEXTEXTURE));
+	_vertexBuffer->Lock(0, _vertexSize *sizeof(CUSTOMVERTEXTEXTURE), (void**)&lockedData, 0);
+	memcpy(lockedData, _vertex, _vertexSize *sizeof(CUSTOMVERTEXTEXTURE));
 	_vertexBuffer->Unlock();
 
-	_indexBuffer->Lock(0, _indexVertex *sizeof(WORD), (void**)&lockedData, 0);
-	memcpy(lockedData, _indexVertex, _vertexIndices->max_size *sizeof(WORD));
+	_indexBuffer->Lock(0, _indexVertexSize *sizeof(WORD), (void**)&lockedData, 0);
+	memcpy(lockedData, _indexVertex, _indexVertexSize *sizeof(WORD));
 	_indexBuffer->Unlock();
 }
 void Mesh::Draw() {
@@ -37,12 +37,15 @@ void Mesh::Draw() {
 	_graficos->pd3dDevice->SetIndices(_indexBuffer);
 	_graficos->pd3dDevice->SetStreamSource(0, _vertexBuffer, 0, sizeof(CUSTOMVERTEXTEXTURE));
 
-	_graficos->pd3dDevice->DrawIndexedPrimitive(D3DPT_TRIANGLELIST, 0, 0, _vertices->max_size, 0, _vertexIndices->max_size/3);
+	_graficos->pd3dDevice->DrawIndexedPrimitive(D3DPT_TRIANGLELIST, 0, 0, _vertexSize, 0, _indexVertexSize /3);
 }
-bool Mesh::LoadOBJ()
+/*bool Mesh::LoadOBJ()
 {
 	FILE * file;
 	fopen_s(&file,_model, "r");
+	vector <CUSTOMVERTEXTEXTURE>* _vertices;
+	vector< WORD >* _verIndices,* _uvIndices;
+	
 
 	if (file == NULL) {
 		printf("Impossible to open the file !\n");
@@ -63,7 +66,7 @@ bool Mesh::LoadOBJ()
 		else if (strcmp(lineHeader, "vt") == 0) {
 			CUSTOMVERTEXTEXTURE uv;
 			fscanf_s(file, "%f %f\n", &uv.x, &uv.y);
-			_uvs->push_back(uv);
+			//_uvs->push_back(uv);
 		}
 		else if (strcmp(lineHeader, "f") == 0)
 		{
@@ -75,17 +78,16 @@ bool Mesh::LoadOBJ()
 				printf("File can't be read by our simple parser : ( Try exporting with other options\n");
 				return false;
 			}
-			_vertexIndices->push_back(vertexIndex[0]);
-			_vertexIndices->push_back(vertexIndex[1]);
-			_vertexIndices->push_back(vertexIndex[2]);
+			_verIndices->push_back(vertexIndex[0]);
+			_verIndices->push_back(vertexIndex[1]);
+			_verIndices->push_back(vertexIndex[2]);
 			_uvIndices->push_back(uvIndex[0]);
 			_uvIndices->push_back(uvIndex[1]);
 			_uvIndices->push_back(uvIndex[2]);
-			_normalIndices->push_back(normalIndex[0]);
-			_normalIndices->push_back(normalIndex[1]);
-			_normalIndices->push_back(normalIndex[2]);
 		}
 	}
-	_vertex = new CUSTOMVERTEXTEXTURE[_vertices->size];
-	_indexVertex = new WORD[_vertexIndices->size];
-}
+	_vertexSize = _vertices->size;
+	_indexVertexSize = _verIndices->size;
+	_vertex = new CUSTOMVERTEXTEXTURE[_vertexSize];
+	_indexVertex = new WORD[_indexVertexSize];
+}*/

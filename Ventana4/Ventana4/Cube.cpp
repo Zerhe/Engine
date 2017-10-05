@@ -11,7 +11,7 @@ Cube::Cube(Graphics* graficos, TextureManager* textureManager, float x, float y,
 	_height = height;
 	_depth = depth;
 
-	/*_vertices = new CUSTOMVERTEXTEXTURE[24];
+	_vertices = new CUSTOMVERTEXTEXTURE[24];
 	_vertices[0] = { -_width / 2.0f, -_height / 2.0f, -_depth/ 2, 0.0f, 1.0f };
 	_vertices[1] = { _width / 2.0f, -_height / 2.0f, -_depth / 2, 1.0f, 1.0f };
 	_vertices[2] = { -_width / 2.0f, _height / 2.0f, -_depth / 2, 0.0f, 0.0f };
@@ -56,7 +56,7 @@ Cube::Cube(Graphics* graficos, TextureManager* textureManager, float x, float y,
 		18,17,19,
 		20,21,22,
 		22,21,23,
-	};*/
+	};
 
 	_graficos->pd3dDevice->CreateVertexBuffer(24 * sizeof(CUSTOMVERTEXTEXTURE), 0, D3DFVF_CUSTOMVERTEXTEXTURE, D3DPOOL_MANAGED, &_vertexBuffer, NULL);
 	_graficos->pd3dDevice->CreateIndexBuffer(36 * sizeof(WORD), 0, D3DFMT_INDEX16, D3DPOOL_MANAGED, &_indexBuffer, NULL);
