@@ -39,12 +39,14 @@ void Mesh::Draw() {
 
 	_graficos->pd3dDevice->DrawIndexedPrimitive(D3DPT_TRIANGLELIST, 0, 0, _vertexSize, 0, _indexVertexSize /3);
 }
-/*bool Mesh::LoadOBJ()
+bool Mesh::LoadOBJ()
 {
 	FILE * file;
 	fopen_s(&file,_model, "r");
-	vector <CUSTOMVERTEXTEXTURE>* _vertices;
-	vector< WORD >* _verIndices,* _uvIndices;
+	vector <D3DXVECTOR3>* _vertices;
+	vector <D3DXVECTOR2>* _uvs;
+	vector <CUSTOMVERTEXTEXTURE>* _verUvs;
+	vector < WORD >* _verIndices;
 	
 
 	if (file == NULL) {
@@ -59,35 +61,75 @@ void Mesh::Draw() {
 			break;
 
 		if (strcmp(lineHeader, "v") == 0) {
-			CUSTOMVERTEXTEXTURE vertex;
+			D3DXVECTOR3 vertex;
 			fscanf_s(file, "%f %f %f\n", &vertex.x, &vertex.y, &vertex.z);
 			_vertices->push_back(vertex);
 		}
 		else if (strcmp(lineHeader, "vt") == 0) {
-			CUSTOMVERTEXTEXTURE uv;
+			D3DXVECTOR2 uv;
 			fscanf_s(file, "%f %f\n", &uv.x, &uv.y);
-			//_uvs->push_back(uv);
+			_uvs->push_back(uv);
 		}
 		else if (strcmp(lineHeader, "f") == 0)
 		{
-			//std::string vertex1, vertex2, vertex3;
+			CUSTOMVERTEXTEXTURE vertex;
 			unsigned int vertexIndex[3], uvIndex[3], normalIndex[3];
-			int matches = fscanf_s(file, "%d/%d/%d %d/%d/%d %d/%d/%d\n", &vertexIndex[0], &uvIndex[0], &normalIndex[0], &vertexIndex[1], &uvIndex[1], &normalIndex[1], &vertexIndex[2], &uvIndex[2], &normalIndex[2]);
-			if (matches != 9)
+
+			fscanf_s(file, "%d/%d/%d %d/%d/%d %d/%d/%d\n", &vertexIndex[0], &uvIndex[0], &normalIndex[0], &vertexIndex[1], &uvIndex[1], &normalIndex[1], &vertexIndex[2], &uvIndex[2], &normalIndex[2]);
+
+			for (int i = 0; i < 3; i++)
 			{
-				printf("File can't be read by our simple parser : ( Try exporting with other options\n");
-				return false;
+				
+				vertex.x = (*_vertices)[vertexIndex[i] - 1].x;
+				vertex.y = (*_vertices)[vertexIndex[i] - 1].y;
+				vertex.z = (*_vertices)[vertexIndex[i] - 1].z;
+				vertex.u = (*_uvs)[uvIndex[i] - 1].x;
+				vertex.v = (*_uvs)[uvIndex[i] - 1].y;
+
+				int id = -1;
+				for (int i = 0; i < _verUvs->size(); i++)
+				{
+					if (CompareVertex(vertex, (*_verUvs)[i]))
+					{
+						id = i;
+						break;
+					}
+				}
+
+				if (id == -1)
+				{
+					_verUvs->push_back(vertex);
+					id = _verUvs->size() - 1;
+				}
+
+				_verIndices->push_back(id);
 			}
-			_verIndices->push_back(vertexIndex[0]);
-			_verIndices->push_back(vertexIndex[1]);
-			_verIndices->push_back(vertexIndex[2]);
-			_uvIndices->push_back(uvIndex[0]);
-			_uvIndices->push_back(uvIndex[1]);
-			_uvIndices->push_back(uvIndex[2]);
 		}
 	}
-	_vertexSize = _vertices->size;
-	_indexVertexSize = _verIndices->size;
+	_vertexSize = _verUvs->size();
+	_indexVertexSize = _verIndices->size();
 	_vertex = new CUSTOMVERTEXTEXTURE[_vertexSize];
 	_indexVertex = new WORD[_indexVertexSize];
-}*/
+
+	for (int i = 0; i < _vertexSize; i++)
+	{
+		_vertex[i] = (*_verUvs)[0];
+	}
+	for (int i = 0; i < _indexVertexSize; i++)
+	{
+		_indexVertex[i] = (*_verIndices)[0];
+	}
+}
+bool Mesh::CompareVertex(CUSTOMVERTEXTEXTURE vertex01, CUSTOMVERTEXTEXTURE vertex02)
+{
+	if (vertex01.x == vertex02.x &&
+		vertex01.y == vertex02.y &&
+		vertex01.z == vertex02.z &&
+		vertex01.u == vertex02.u &&
+		vertex01.v == vertex02.v)
+	{
+		return true;
+	}
+	else
+		return false;
+}
