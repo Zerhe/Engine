@@ -1,5 +1,5 @@
 #include "Mesh.h"
-Mesh::Mesh(Graphics* graficos, TextureManager* textureManager, float x, float y, float z, float width, float height, float depth, LPCWSTR stringTexture, const char * model)
+Mesh::Mesh(Graphics* graficos, TextureManager* textureManager, float x, float y, float z, LPCWSTR stringTexture, const char * model)
 {
 	_graficos = graficos;
 	_textureManager = textureManager;
@@ -7,16 +7,13 @@ Mesh::Mesh(Graphics* graficos, TextureManager* textureManager, float x, float y,
 	_x = x;
 	_y = y;
 	_z = z;
-	_width = width;
-	_height = height;
-	_depth = depth;
 	_model = model;
 
 	//LoadOBJ();
 
 	/*  http://www.opengl-tutorial.org/es/beginners-tutorials/tutorial-7-model-loading/#cargando-el-obj tutorial loadOBJ*/
 
-	_graficos->pd3dDevice->CreateVertexBuffer(_vertexSize * sizeof(CUSTOMVERTEXTEXTURE), 0, D3DFVF_CUSTOMVERTEXTEXTURE, D3DPOOL_MANAGED, &_vertexBuffer, NULL);
+	/*_graficos->pd3dDevice->CreateVertexBuffer(_vertexSize * sizeof(CUSTOMVERTEXTEXTURE), 0, D3DFVF_CUSTOMVERTEXTEXTURE, D3DPOOL_MANAGED, &_vertexBuffer, NULL);
 	_graficos->pd3dDevice->CreateIndexBuffer(_indexVertexSize * sizeof(WORD), 0, D3DFMT_INDEX16, D3DPOOL_MANAGED, &_indexBuffer, NULL);
 
 	VOID* lockedData = NULL;
@@ -26,7 +23,7 @@ Mesh::Mesh(Graphics* graficos, TextureManager* textureManager, float x, float y,
 
 	_indexBuffer->Lock(0, _indexVertexSize *sizeof(WORD), (void**)&lockedData, 0);
 	memcpy(lockedData, _indexVertex, _indexVertexSize *sizeof(WORD));
-	_indexBuffer->Unlock();
+	_indexBuffer->Unlock();*/
 }
 void Mesh::Draw() {
 	Transform(_graficos);
@@ -43,10 +40,10 @@ bool Mesh::LoadOBJ()
 {
 	FILE * file;
 	fopen_s(&file,_model, "r");
-	vector <D3DXVECTOR3>* _vertices;
-	vector <D3DXVECTOR2>* _uvs;
-	vector <CUSTOMVERTEXTEXTURE>* _verUvs;
-	vector < WORD >* _verIndices;
+	vector <D3DXVECTOR3>* _vertices = new vector <D3DXVECTOR3>();
+	vector <D3DXVECTOR2>* _uvs = new vector <D3DXVECTOR2>();
+	vector <CUSTOMVERTEXTEXTURE>* _verUvs = new vector <CUSTOMVERTEXTEXTURE>();
+	vector < WORD >* _verIndices = new vector <WORD>();
 	
 
 	if (file == NULL) {
@@ -56,7 +53,7 @@ bool Mesh::LoadOBJ()
 	while (1) 
 	{
 		char lineHeader[128];
-		int res = fscanf_s(file, "%s", lineHeader);
+		int res = fscanf_s(file, "%s", lineHeader, 128);
 		if (res == EOF)
 			break;
 
@@ -113,12 +110,26 @@ bool Mesh::LoadOBJ()
 
 	for (int i = 0; i < _vertexSize; i++)
 	{
-		_vertex[i] = (*_verUvs)[0];
+		_vertex[i] = (*_verUvs)[i];
 	}
+	int j = _indexVertexSize;
 	for (int i = 0; i < _indexVertexSize; i++)
 	{
-		_indexVertex[i] = (*_verIndices)[0];
+		j--;
+		_indexVertex[i] = (*_verIndices)[j];
 	}
+
+	_graficos->pd3dDevice->CreateVertexBuffer(_vertexSize * sizeof(CUSTOMVERTEXTEXTURE), 0, D3DFVF_CUSTOMVERTEXTEXTURE, D3DPOOL_MANAGED, &_vertexBuffer, NULL);
+	_graficos->pd3dDevice->CreateIndexBuffer(_indexVertexSize * sizeof(WORD), 0, D3DFMT_INDEX16, D3DPOOL_MANAGED, &_indexBuffer, NULL);
+
+	VOID* lockedData = NULL;
+	_vertexBuffer->Lock(0, _vertexSize * sizeof(CUSTOMVERTEXTEXTURE), (void**)&lockedData, 0);
+	memcpy(lockedData, _vertex, _vertexSize * sizeof(CUSTOMVERTEXTEXTURE));
+	_vertexBuffer->Unlock();
+
+	_indexBuffer->Lock(0, _indexVertexSize * sizeof(WORD), (void**)&lockedData, 0);
+	memcpy(lockedData, _indexVertex, _indexVertexSize * sizeof(WORD));
+	_indexBuffer->Unlock();
 }
 bool Mesh::CompareVertex(CUSTOMVERTEXTEXTURE vertex01, CUSTOMVERTEXTEXTURE vertex02)
 {

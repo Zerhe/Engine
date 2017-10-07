@@ -16,7 +16,7 @@ class PlayState : public Game {
 	Sprite* _sprite;
 	Sprite* _sprite2;
 	Sprite* _wolf;
-	Cube* _mesh;
+	Mesh* _mesh;
 	
 	int _contador = 0;
 	double accumTime = 0.0;
