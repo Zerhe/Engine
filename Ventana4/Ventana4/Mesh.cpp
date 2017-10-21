@@ -1,12 +1,9 @@
 #include "Mesh.h"
-Mesh::Mesh(Graphics* graficos, TextureManager* textureManager, float x, float y, float z, LPCWSTR stringTexture, const char * model)
+Mesh::Mesh(Graphics* graficos, TextureManager* textureManager, LPCWSTR stringTexture, const char * model)
 {
 	_graficos = graficos;
 	_textureManager = textureManager;
 	_texture = _textureManager->CreateTexture(stringTexture, _graficos);
-	_x = x;
-	_y = y;
-	_z = z;
 	_model = model;
 
 	//LoadOBJ();
@@ -26,7 +23,7 @@ Mesh::Mesh(Graphics* graficos, TextureManager* textureManager, float x, float y,
 	_indexBuffer->Unlock();*/
 }
 void Mesh::Draw() {
-	Transform(_graficos);
+	//Transform(_graficos);
 
 	_graficos->BindTexture(_texture->getTexture());
 

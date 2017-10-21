@@ -3,11 +3,18 @@
 bool PlayState::onInit()
 {
 	_camera = new Camera(_graficos, 800.0f, 600.0f);
-	_sprite = new Sprite(_graficos, _textureManager, 500.0f, 200.0f, 0.0f, 200.0f, 312.0f, 0.0f, Square, 0.0f, L"../Walk2.png", 2000.0f, 312.0f);
-	_sprite2 = new Sprite(_graficos, _textureManager, 150.0f, 200.0f, 0.0f, 200.0f, 312.0f, 0.0f, Square, 0.0f, L"../Walk2.png", 2000.0f, 312.0f);
-	_wolf = new Sprite(_graficos, _textureManager, 400.0f, 500.0f, 0.0f, 200.0f, 200.0f, 0.0f, Square, 0.0f, L"../Wolf.png", 800.0f, 772.0f);
-	_mesh = new Mesh(_graficos, _textureManager, 50.0f, 200.0f, 50.0f, L"../Estrella.png", "../cube.obj");
+	_sprite = new Sprite(_graficos, _textureManager, 200.0f, 312.0f, Square, 0.0f, L"../Walk2.png", 2000.0f, 312.0f);
+	_sprite2 = new Sprite(_graficos, _textureManager, 200.0f, 312.0f, Square, 0.0f, L"../Walk2.png", 2000.0f, 312.0f);
+	_wolf = new Sprite(_graficos, _textureManager, 200.0f, 200.0f, Square, 0.0f, L"../Wolf.png", 800.0f, 772.0f);
+	_mesh = new Mesh(_graficos, _textureManager, L"../Estrella.png", "../cube.obj");
 	_mesh->LoadOBJ();
+
+	_meshRenderer = new MeshRenderer(_mesh);
+
+	_zombie01 = new GameObject(_graficos);
+	_cubo = new GameObject(_graficos);
+	_cubo->AddChild(_meshRenderer);
+
 	_collisionManager->Register(_sprite, 1);
 	_collisionManager->Register(_sprite2, 2);
 	_sprite->_inamovible = false;
@@ -19,14 +26,14 @@ void PlayState::onDraw()
 {
 	if (_camera)
 		_camera->Draw();
-	if (_sprite)
-		_sprite->Draw();
-	if (_sprite2)
-		_sprite2->Draw();
-	if (_wolf)
-		_wolf->Draw();
-	if (_mesh)
-		_mesh->Draw();
+	if (_zombie01)
+		_zombie01->Draw();
+	if (_zombie02)
+		_zombie02->Draw();
+	if (_lobo)
+		_lobo->Draw();
+	if (_cubo)
+		_cubo->Draw();
 
 }
 bool PlayState::onShutdown() 
@@ -52,9 +59,9 @@ bool PlayState::onUpdate()
 	{ 
 		accumTime -= 0.25;
 
-		_sprite->SetUv(500.0f, 200.0f, 200.0f, 312.0f, 10);
+		_sprite->SetUv(200.0f, 312.0f, 10);
 		_sprite->LaterFrame();
-		_sprite2->SetUv(100.0f, 200.0f, 200.0f, 312.0f, 10);
+		_sprite2->SetUv(200.0f, 312.0f, 10);
 		_sprite2->LaterFrame();
 	}
 	if (_contador == 2)
@@ -63,16 +70,15 @@ bool PlayState::onUpdate()
 		_contador = 0;
 	}
 	//_camera->_pos.x-= 10.0 * _timeMeter->GetDT();    Muevo en x la camara
-	_sprite->_x-= 10.0 * _timeMeter->GetDT();
+	/*_sprite->_x-= 10.0 * _timeMeter->GetDT();
 	if (_sprite->_x < -1000)
 		_sprite->_x = 800;
 	_wolf->_angle+=10.0 * _timeMeter->GetDT();
-	
-	_mesh->_x = 600;
-	_mesh->_angleY += 10.0 * _timeMeter->GetDT();
-	_mesh->_sX = 100;
-	_mesh->_sY = 100;
-	_mesh->_sZ = 100;
+	*/
+
+	_cubo->transform._position->x = 300;
+	_cubo->transform._position->y = 300;
+	_cubo->transform._rotation->x += 10.0 *_timeMeter->GetDT();;
 
 	return true;
 }

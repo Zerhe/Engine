@@ -1,12 +1,9 @@
 #include "Cube.h"
-Cube::Cube(Graphics* graficos, TextureManager* textureManager, float x, float y, float z, float width, float height, float depth, LPCWSTR stringTexture)
+Cube::Cube(Graphics* graficos, TextureManager* textureManager, float width, float height, float depth, LPCWSTR stringTexture)
 {
 	_graficos = graficos;
 	_textureManager = textureManager;
 	_texture = _textureManager->CreateTexture(stringTexture, _graficos);
-	_x = x;
-	_y = y;
-	_z = z;
 	_width = width;
 	_height = height;
 	_depth = depth;
@@ -71,7 +68,6 @@ Cube::Cube(Graphics* graficos, TextureManager* textureManager, float x, float y,
 	_indexBuffer->Unlock();
 }
 void Cube::Draw() {
-	Transform(_graficos);
 
 	_graficos->BindTexture(_texture->getTexture());
 

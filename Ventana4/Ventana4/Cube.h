@@ -19,7 +19,7 @@ class VENTANA4_API Cube : public Entity3D
 	LPDIRECT3DVERTEXBUFFER9	_vertexBuffer;
 	LPDIRECT3DINDEXBUFFER9 _indexBuffer;
 public:
-	Cube(Graphics* graficos, TextureManager* textureManager, float x, float y, float z, float width, float height, float depth, LPCWSTR stringTexture);
+	Cube(Graphics* graficos, TextureManager* textureManager, float width, float height, float depth, LPCWSTR stringTexture);
 	void Draw();
 };
 #endif

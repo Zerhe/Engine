@@ -6,14 +6,14 @@
 
 using namespace std;
 
-class Entity3D : public Entity
+class VENTANA4_API Entity3D : public Entity
 {
 public:
-	float _depth = 0;
+	/*
 	float _angleX = 0;
 	float _angleY = 0;
 	float _angleZ = 0;
-	void Transform(Graphics *graficos);
+	void Transform(Graphics *graficos);*/
 };
 #endif // !ENTITY3D_H
 

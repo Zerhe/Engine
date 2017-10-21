@@ -22,7 +22,7 @@ class VENTANA4_API Mesh : public Entity3D
 	LPDIRECT3DINDEXBUFFER9 _indexBuffer;
 	const char * _model;
 public:
-	Mesh(Graphics* graficos, TextureManager* textureManager, float x, float y, float z, LPCWSTR stringTexture, const char * model);
+	Mesh(Graphics* graficos, TextureManager* textureManager, LPCWSTR stringTexture, const char * model);
 	void Draw();
 	bool LoadOBJ();
 	bool CompareVertex(CUSTOMVERTEXTEXTURE vertex01, CUSTOMVERTEXTEXTURE vertex02);

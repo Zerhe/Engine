@@ -11,7 +11,7 @@ class VENTANA4_API Shape : public Entity2D {
 	Graphics* _graficos;
 	CUSTOMVERTEX* _vertices;
 public:
-	Shape(Graphics *graficos,float x, float y, float z, float angle, float sx, float sy, float sz);
+	Shape(Graphics *graficos);
 	void Draw();
 	void setUV();
 };

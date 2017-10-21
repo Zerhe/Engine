@@ -1,17 +1,17 @@
 #include "Sprite.h"
 
-Sprite::Sprite(Graphics* graficos, TextureManager* textureManager, float x, float y, float z, float width, float height, float angle, CollType collType, float r, LPCWSTR stringTexture, float textureWidth, float textureHeight)
+Sprite::Sprite(Graphics* graficos, TextureManager* textureManager, float width, float height, CollType collType, float r, LPCWSTR stringTexture, float textureWidth, float textureHeight)
 {
 	_graficos = graficos;
 	_textureManager = textureManager;
 	_texture = _textureManager->CreateTexture(stringTexture, _graficos);
-	_x = x;
+	/*_x = x;
 	_y = y;
 	_z = z;
 	_angle = angle;
 	_sX = 1;
 	_sY = 1;
-	_sZ = 1;
+	_sZ = 1;*/
 	_collType = collType;
 	_frame = 0;
 	_collWidth = _width = width;
@@ -29,14 +29,14 @@ Sprite::Sprite(Graphics* graficos, TextureManager* textureManager, float x, floa
 }
 void Sprite::Draw()
 {
-	Transform(_graficos);
+	//Transform(_graficos);
 
 	_graficos->BindTexture(_texture->getTexture());
 
 	_graficos->DrawSprite(_vertices, 4);
 
 }
-void Sprite::SetUv(float x, float y, float width, float height, int framesAncho)
+void Sprite::SetUv(/*float x, float y,*/ float width, float height, int framesAncho)
 {
 	_collWidth = _width = width;
 	_collHeight = _height = height;
@@ -55,12 +55,12 @@ void Sprite::OnCollision(Entity2D *entidad)
 	Penetration(entidad);
 	if (_inamovible == false)
 	{
-		_x++;
+		//_x++;
 	}
 }
 void Sprite::Penetration(Entity2D *entidad)
 {
-	if (entidad->_inamovible)
+	/*if (entidad->_inamovible)
 	{
 		if (_x < entidad->_x)
 			_x = entidad->_x - _width;
@@ -73,6 +73,6 @@ void Sprite::Penetration(Entity2D *entidad)
 			entidad->_x = _x - entidad->_width;
 		else if (entidad->_x > _x)
 			entidad->_x = _x + entidad->_width;
-	}
+	}*/
 	//entidad->_mass
 }

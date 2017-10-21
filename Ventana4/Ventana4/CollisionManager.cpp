@@ -31,13 +31,13 @@ void CollisionManager::CheckCollision()
 {
 	for (iter01 = group01.begin(); iter01 != group01.end(); iter01++)
 	{
-		x1 = (*iter01)->_x;
-		y1 = (*iter01)->_y;
+		//x1 = (*iter01)->_x;    Arreglar la colicion
+		//y1 = (*iter01)->_y;    Arreglar la colicion
 
 		for (iter02 = group02.begin(); iter02 != group02.end(); iter02++)
 		{
-			x2 = (*iter02)->_x;
-			y2 = (*iter02)->_y;
+			//x2 = (*iter02)->_x;    Arreglar la colicion
+			//y2 = (*iter02)->_y    Arreglar la colicion
 
 			if ((*iter01)->_collType == Square && (*iter02)->_collType == Square)
 			{
