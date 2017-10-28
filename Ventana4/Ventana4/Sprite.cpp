@@ -55,7 +55,7 @@ void Sprite::OnCollision(Entity2D *entidad)
 	Penetration(entidad);
 	if (_inamovible == false)
 	{
-		//_x++;
+		// hacer algo cuando coliciona 
 	}
 }
 void Sprite::Penetration(Entity2D *entidad)

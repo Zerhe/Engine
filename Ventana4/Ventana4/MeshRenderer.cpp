@@ -12,3 +12,7 @@ void MeshRenderer::SetMesh(Mesh* mesh)
 {
 	_mesh = mesh;
 }
+Mesh* MeshRenderer::GetMesh()
+{
+	return _mesh;
+}

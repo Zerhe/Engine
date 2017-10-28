@@ -7,9 +7,12 @@
 class VENTANA4_API Transform
 {
 public:
-	D3DXVECTOR3* _position = new D3DXVECTOR3(0,0,0);
-	D3DXVECTOR3* _rotation = new D3DXVECTOR3(0, 0, 0);
-	D3DXVECTOR3* _scale = new D3DXVECTOR3(100, 100, 100);
+	D3DXVECTOR3* position = new D3DXVECTOR3(0,0,0);
+	D3DXVECTOR3* rotation = new D3DXVECTOR3(0, 0, 0);
+	D3DXVECTOR3* scale = new D3DXVECTOR3(1, 1, 1);
 	void LoadTransform(Graphics *graficos);
+	void SetPosition(float x, float y, float z);
+	void SetRotation(float x, float y, float z);
+	void SetScale(float x, float y, float z);
 };
 #endif

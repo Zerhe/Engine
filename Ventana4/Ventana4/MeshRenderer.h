@@ -13,5 +13,6 @@ public:
 	MeshRenderer(Mesh* mesh);
 	void Draw();
 	void SetMesh(Mesh* mesh);
+	Mesh* GetMesh();
 };
 #endif

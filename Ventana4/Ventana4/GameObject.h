@@ -12,7 +12,11 @@ class VENTANA4_API GameObject : public Node
 {
 	Graphics* _graficos;
 public:
-	GameObject(Graphics* graficos);
+	GameObject(Graphics* graficos,
+		float posX, float posY, float posZ,
+		float rotX, float rotY, float rotZ,
+		float scaX, float scaY, float scaZ);
+	~GameObject();
 	Transform transform;
 	void Draw();
 };
