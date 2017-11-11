@@ -2,7 +2,6 @@
 
 void Transform::LoadTransform(Graphics *graficos)
 {
-	graficos->LoadIdentity();
 	graficos->Translate(position->x, position->y, position->z);
 	graficos->RotationX(rotation->x);
 	graficos->RotationY(rotation->y);

@@ -219,4 +219,14 @@ void Graphics::BindTexture(LPDIRECT3DTEXTURE9 textura)
 {
 	pd3dDevice->SetTexture(0, textura);
 }
+D3DXMATRIX Graphics::GetMatrixWorld()
+{
+	D3DXMATRIX matrix;
+	pd3dDevice->GetTransform(D3DTS_WORLDMATRIX(0), &matrix);
+	return matrix;
+}
+void Graphics::SetMatrixWorld(D3DXMATRIX matrix)
+{
+	pd3dDevice->SetTransform(D3DTS_WORLDMATRIX(0), &matrix);
+}
 

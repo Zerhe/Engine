@@ -11,6 +11,7 @@ class VENTANA4_API Node
 protected:
 	vector <Node*>* childs = new vector <Node*>();
 public:
+	~Node();
 	virtual void AddChild(Node* child);
 	virtual void RemoveChild();
 	virtual void Draw() {};

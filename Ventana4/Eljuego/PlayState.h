@@ -4,6 +4,7 @@
 #include <string>
 #include "../Ventana4/Game.h"
 #include "../Ventana4/GameObject.h"
+#include "../Ventana4/Scene.h"
 #include "../Ventana4/MeshRenderer.h"
 #include "../Ventana4/SpriteRenderer.h"
 #include "../Ventana4/Shape.h"
@@ -15,15 +16,17 @@
 using namespace std;
 
 class PlayState : public Game {
+	Scene* _scene01;
+	GameObject* _cameraObject;
+	GameObject* _zombie01;
+	GameObject* _zombie02;
+	GameObject* _lobo;
+	GameObject* _cubo;
 	Camera* _camera;
 	Sprite* _sprite01;
 	Sprite* _sprite02;
 	Sprite* _sprite03;
 	Mesh* _mesh;
-	GameObject* _zombie01;
-	GameObject* _zombie02;
-	GameObject* _lobo;
-	GameObject* _cubo;
 	SpriteRenderer* _spriteRenderer01;
 	SpriteRenderer* _spriteRenderer02;
 	SpriteRenderer* _spriteRenderer03;

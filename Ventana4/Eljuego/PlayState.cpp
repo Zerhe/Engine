@@ -2,6 +2,13 @@
 
 bool PlayState::onInit()
 {
+	_scene01 = new Scene(_graficos);
+	_cameraObject = new GameObject(_graficos, 0, 0, 0, 0, 0, 0, 1, 1, 1);
+	_zombie01 = new GameObject(_graficos, 600, 200, 0, 0, 0, 0, 1, 1, 1);
+	_zombie02 = new GameObject(_graficos, 200, 200, 0, 0, 0, 0, 1, 1, 1);
+	_lobo = new GameObject(_graficos, 400, 500, 0, 0, 0, 0, 1, 1, 1);
+	_cubo = new GameObject(_graficos, 300, 300, 0, 0, 0, 0, 100, 100, 100);
+
 	_camera = new Camera(_graficos, 800.0f, 600.0f);
 	_sprite01 = new Sprite(_graficos, _textureManager, 200.0f, 312.0f, Square, 0.0f, L"../Walk2.png", 2000.0f, 312.0f);
 	_sprite02 = new Sprite(_graficos, _textureManager, 200.0f, 312.0f, Square, 0.0f, L"../Walk2.png", 2000.0f, 312.0f);
@@ -14,15 +21,18 @@ bool PlayState::onInit()
 	_spriteRenderer03 = new SpriteRenderer(_sprite03);
 	_meshRenderer = new MeshRenderer(_mesh);
 
-	_zombie01 = new GameObject(_graficos, 600, 200, 0, 0, 0, 0, 1, 1, 1);
-	_zombie02 = new GameObject(_graficos, 200, 200, 0, 0, 0, 0, 1, 1, 1);
-	_lobo = new GameObject(_graficos, 400, 500, 0, 0, 0, 0, 1, 1, 1);
-	_cubo = new GameObject(_graficos, 300, 300, 0, 0, 0, 0, 100, 100, 100);
-
+	_cameraObject->AddChild(_camera);
 	_zombie01->AddChild(_spriteRenderer01);
 	_zombie02->AddChild(_spriteRenderer02);
 	_lobo->AddChild(_spriteRenderer03);
+	_lobo->AddChild(_zombie02);
 	_cubo->AddChild(_meshRenderer);
+
+	_scene01->AddChild(_cameraObject);
+	
+	_scene01->AddChild(_lobo);
+	_scene01->AddChild(_cubo);
+	_scene01->AddChild(_zombie01);
 
 	_collisionManager->Register(_sprite01, 1);
 	_collisionManager->Register(_sprite02, 2);
@@ -33,16 +43,8 @@ bool PlayState::onInit()
 }
 void PlayState::onDraw() 
 {
-	if (_camera)
-		_camera->Draw();
-	if (_zombie01)
-		_zombie01->Draw();
-	if (_zombie02)
-		_zombie02->Draw();
-	if (_lobo)
-		_lobo->Draw();
-	if (_cubo)
-		_cubo->Draw();
+	if (_scene01)
+		_scene01->Draw();
 }
 bool PlayState::onShutdown() 
 {
@@ -90,10 +92,10 @@ bool PlayState::onUpdate()
 	}
 	if (_contador == 2)
 	{
-		//_camera->Pitch(1.0f * _timeMeter->GetDT());  Roto en x la camara
+		//_camera->Pitch(1.0f * _timeMeter->GetDT()); // Roto en x la camara
 		_contador = 0;
 	}
-	//_camera->_pos.x-= 10.0 * _timeMeter->GetDT();    Muevo en x la camara
+	_camera->_pos.x-= 10.0 * _timeMeter->GetDT();   // Muevo en x la camara
 	_zombie01->transform.position->x -= 100.0 * _timeMeter->GetDT();
 	if (_zombie01->transform.position->x < -1000)
 		_zombie01->transform.position->x = 800;

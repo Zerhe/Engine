@@ -1,9 +1,10 @@
 #ifndef CAMERA_H
 #define CAMERA_H
 #include "Api.h"
+#include "Component.h"
 #include "Graphics.h"
 
-class VENTANA4_API Camera{
+class VENTANA4_API Camera : public Component {
 	Graphics* _graficos;
 	D3DXMATRIX _matProj;
 	D3DXMATRIX _matView;

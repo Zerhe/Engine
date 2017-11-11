@@ -10,19 +10,15 @@ GameObject::GameObject(Graphics* graficos,
 	transform.SetScale(scaX, scaY, scaZ);
 	_graficos = graficos;
 }
-GameObject::~GameObject()
-{
-	for (int i = 0; i < childs->size(); i++)
-	{
-		//delete (*childs)[i];
-	}
-}
 void GameObject::Draw()
 {
+	_graficos->matrices.push(_graficos->GetMatrixWorld());
 	transform.LoadTransform(_graficos);
 
 	for (int i = 0; i < childs->size(); i++)
 	{
 		(*childs)[i]->Draw();
 	}
+	_graficos->SetMatrixWorld(_graficos->matrices.top());
+	_graficos->matrices.pop();
 }

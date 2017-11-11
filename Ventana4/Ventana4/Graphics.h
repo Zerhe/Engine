@@ -6,6 +6,7 @@
 #include <d3d9.h>
 #include <d3dx9.h>
 #include "VertexBufferManager.h"
+#include <stack>
 
 //#include <DirectXMath.h>
 
@@ -36,6 +37,7 @@ class VENTANA4_API Graphics
 
 public:
 	LPDIRECT3DDEVICE9 pd3dDevice;
+	stack <D3DXMATRIX> matrices;
 	 bool Initialize(HWND wndHandle, int width, int height);
 	 void Shutdown();
 	 void Clear();
@@ -57,6 +59,8 @@ public:
 	 LPDIRECT3DTEXTURE9 LoadTexture(LPCWSTR stringTexture);
 	 void BindTexture(LPDIRECT3DTEXTURE9 textura);
 	 void SetTransformCamera(D3DTRANSFORMSTATETYPE state, D3DMATRIX *matrix);
+	 D3DXMATRIX GetMatrixWorld();
+	 void SetMatrixWorld(D3DXMATRIX matrix);
 };
 #endif 
 

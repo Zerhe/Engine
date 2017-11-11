@@ -10,20 +10,8 @@ Mesh::Mesh(Graphics* graficos, TextureManager* textureManager, LPCWSTR stringTex
 
 	/*  http://www.opengl-tutorial.org/es/beginners-tutorials/tutorial-7-model-loading/#cargando-el-obj tutorial loadOBJ*/
 
-	/*_graficos->pd3dDevice->CreateVertexBuffer(_vertexSize * sizeof(CUSTOMVERTEXTEXTURE), 0, D3DFVF_CUSTOMVERTEXTEXTURE, D3DPOOL_MANAGED, &_vertexBuffer, NULL);
-	_graficos->pd3dDevice->CreateIndexBuffer(_indexVertexSize * sizeof(WORD), 0, D3DFMT_INDEX16, D3DPOOL_MANAGED, &_indexBuffer, NULL);
-
-	VOID* lockedData = NULL;
-	_vertexBuffer->Lock(0, _vertexSize *sizeof(CUSTOMVERTEXTEXTURE), (void**)&lockedData, 0);
-	memcpy(lockedData, _vertex, _vertexSize *sizeof(CUSTOMVERTEXTEXTURE));
-	_vertexBuffer->Unlock();
-
-	_indexBuffer->Lock(0, _indexVertexSize *sizeof(WORD), (void**)&lockedData, 0);
-	memcpy(lockedData, _indexVertex, _indexVertexSize *sizeof(WORD));
-	_indexBuffer->Unlock();*/
 }
 void Mesh::Draw() {
-	//Transform(_graficos);
 
 	_graficos->BindTexture(_texture->getTexture());
 
