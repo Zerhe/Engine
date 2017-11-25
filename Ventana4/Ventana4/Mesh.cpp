@@ -132,53 +132,19 @@ void Mesh::GenerateBoundingBox()
 {
 	_boundingBox = new D3DXVECTOR3[8];
 
-	for (int j = 0; j < 8; j++)
+	int j;
+	for (int i = 0; i < _vertexSize; i++)
 	{
-		for (int i = 0; i < _vertexSize; i++)
+		j = 0;
+		if (_vertex[i].x < _boundingBox[j].x)
 		{
-			switch (j)
-			{
-				case 0:
-					_vertex[i].x < _boundingBox[j].x;
-					_vertex[i].y < _boundingBox[j].y;
-					_vertex[i].z < _boundingBox[j].z;
-					break;
-				case 1:
-					_vertex[i].x < _boundingBox[j].x;
-					_vertex[i].y < _boundingBox[j].y;
-					_vertex[i].z > _boundingBox[j].z;
-					break;
-				case 2:
-					_vertex[i].x < _boundingBox[j].x;
-					_vertex[i].y > _boundingBox[j].y;
-					_vertex[i].z > _boundingBox[j].z;
-					break;
-				case 3:
-					_vertex[i].x < _boundingBox[j].x;
-					_vertex[i].y > _boundingBox[j].y;
-					_vertex[i].z < _boundingBox[j].z;
-					break;
-				case 4:
-					_vertex[i].x > _boundingBox[j].x;
-					_vertex[i].y < _boundingBox[j].y;
-					_vertex[i].z < _boundingBox[j].z;
-					break;
-				case 5:
-					_vertex[i].x > _boundingBox[j].x;
-					_vertex[i].y < _boundingBox[j].y;
-					_vertex[i].z > _boundingBox[j].z;
-					break;
-				case 6:
-					_vertex[i].x > _boundingBox[j].x;
-					_vertex[i].y > _boundingBox[j].y;
-					_vertex[i].z > _boundingBox[j].z;
-					break;
-				case 7:
-					_vertex[i].x > _boundingBox[j].x;
-					_vertex[i].y > _boundingBox[j].y;
-					_vertex[i].z < _boundingBox[j].z;
-					break;
-			}
+			_boundingBox[j].x = _vertex[i].x;
 		}
+		j++;
+		if (_vertex[i].x < _boundingBox[j].x)
+		{
+			_boundingBox[j].x = _vertex[i].x;
+		}
+		j++;
 	}
 }
