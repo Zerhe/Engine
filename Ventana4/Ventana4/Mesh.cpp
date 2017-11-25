@@ -12,30 +12,29 @@ Mesh::Mesh(Graphics* graficos, TextureManager* textureManager, LPCWSTR stringTex
 
 }
 void Mesh::Draw() {
+	GenerateBoundingBox();
 
 	_graficos->BindTexture(_texture->getTexture());
-
 	_graficos->pd3dDevice->SetFVF(D3DFVF_CUSTOMVERTEXTEXTURE);
 	_graficos->pd3dDevice->SetIndices(_indexBuffer);
 	_graficos->pd3dDevice->SetStreamSource(0, _vertexBuffer, 0, sizeof(CUSTOMVERTEXTEXTURE));
-
-	_graficos->pd3dDevice->DrawIndexedPrimitive(D3DPT_TRIANGLELIST, 0, 0, _vertexSize, 0, _indexVertexSize /3);
+	_graficos->pd3dDevice->DrawIndexedPrimitive(D3DPT_TRIANGLELIST, 0, 0, _vertexSize, 0, _indexVertexSize / 3);
 }
 bool Mesh::LoadOBJ()
 {
 	FILE * file;
-	fopen_s(&file,_model, "r");
+	fopen_s(&file, _model, "r");
 	vector <D3DXVECTOR3>* _vertices = new vector <D3DXVECTOR3>();
 	vector <D3DXVECTOR2>* _uvs = new vector <D3DXVECTOR2>();
 	vector <CUSTOMVERTEXTEXTURE>* _verUvs = new vector <CUSTOMVERTEXTEXTURE>();
 	vector < WORD >* _verIndices = new vector <WORD>();
-	
+
 
 	if (file == NULL) {
 		printf("Impossible to open the file !\n");
 		return false;
 	}
-	while (1) 
+	while (1)
 	{
 		char lineHeader[128];
 		int res = fscanf_s(file, "%s", lineHeader, 128);
@@ -61,7 +60,7 @@ bool Mesh::LoadOBJ()
 
 			for (int i = 0; i < 3; i++)
 			{
-				
+
 				vertex.x = (*_vertices)[vertexIndex[i] - 1].x;
 				vertex.y = (*_vertices)[vertexIndex[i] - 1].y;
 				vertex.z = (*_vertices)[vertexIndex[i] - 1].z;
@@ -128,4 +127,58 @@ bool Mesh::CompareVertex(CUSTOMVERTEXTEXTURE vertex01, CUSTOMVERTEXTEXTURE verte
 	}
 	else
 		return false;
+}
+void Mesh::GenerateBoundingBox()
+{
+	_boundingBox = new D3DXVECTOR3[8];
+
+	for (int j = 0; j < 8; j++)
+	{
+		for (int i = 0; i < _vertexSize; i++)
+		{
+			switch (j)
+			{
+				case 0:
+					_vertex[i].x < _boundingBox[j].x;
+					_vertex[i].y < _boundingBox[j].y;
+					_vertex[i].z < _boundingBox[j].z;
+					break;
+				case 1:
+					_vertex[i].x < _boundingBox[j].x;
+					_vertex[i].y < _boundingBox[j].y;
+					_vertex[i].z > _boundingBox[j].z;
+					break;
+				case 2:
+					_vertex[i].x < _boundingBox[j].x;
+					_vertex[i].y > _boundingBox[j].y;
+					_vertex[i].z > _boundingBox[j].z;
+					break;
+				case 3:
+					_vertex[i].x < _boundingBox[j].x;
+					_vertex[i].y > _boundingBox[j].y;
+					_vertex[i].z < _boundingBox[j].z;
+					break;
+				case 4:
+					_vertex[i].x > _boundingBox[j].x;
+					_vertex[i].y < _boundingBox[j].y;
+					_vertex[i].z < _boundingBox[j].z;
+					break;
+				case 5:
+					_vertex[i].x > _boundingBox[j].x;
+					_vertex[i].y < _boundingBox[j].y;
+					_vertex[i].z > _boundingBox[j].z;
+					break;
+				case 6:
+					_vertex[i].x > _boundingBox[j].x;
+					_vertex[i].y > _boundingBox[j].y;
+					_vertex[i].z > _boundingBox[j].z;
+					break;
+				case 7:
+					_vertex[i].x > _boundingBox[j].x;
+					_vertex[i].y > _boundingBox[j].y;
+					_vertex[i].z < _boundingBox[j].z;
+					break;
+			}
+		}
+	}
 }

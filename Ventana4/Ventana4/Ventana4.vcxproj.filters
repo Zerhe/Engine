@@ -72,6 +72,9 @@
     <ClCompile Include="Scene.cpp">
       <Filter>Archivos de recursos</Filter>
     </ClCompile>
+    <ClCompile Include="Frustum.cpp">
+      <Filter>Archivos de recursos</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -150,6 +153,9 @@
       <Filter>Archivos de código fuente</Filter>
     </ClInclude>
     <ClInclude Include="Scene.h">
+      <Filter>Archivos de código fuente</Filter>
+    </ClInclude>
+    <ClInclude Include="Frustum.h">
       <Filter>Archivos de código fuente</Filter>
     </ClInclude>
   </ItemGroup>

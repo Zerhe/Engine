@@ -3,9 +3,11 @@
 #include "Api.h"
 #include "Component.h"
 #include "Graphics.h"
+#include "Frustum.h"
 
 class VENTANA4_API Camera : public Component {
 	Graphics* _graficos;
+	Frustum* _frustum;
 	D3DXMATRIX _matProj;
 	D3DXMATRIX _matView;
 	D3DXVECTOR3 _forward;
