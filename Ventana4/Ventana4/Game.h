@@ -9,6 +9,7 @@
 #include "TextureManager.h"
 #include "TimeMeter.h"
 #include "CollisionManager.h"
+#include "Frustum.h"
 
 using namespace std;
 
@@ -25,6 +26,7 @@ protected:
 	TimeMeter* _timeMeter;
 	CollisionManager* _collisionManager;
 	Input* _input;
+	Frustum* _frustum;
 
 	virtual bool onInit() { return true; };
 	virtual bool onUpdate() { return true; };

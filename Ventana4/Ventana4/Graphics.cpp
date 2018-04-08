@@ -229,4 +229,16 @@ void Graphics::SetMatrixWorld(D3DXMATRIX matrix)
 {
 	pd3dDevice->SetTransform(D3DTS_WORLDMATRIX(0), &matrix);
 }
+D3DXMATRIX Graphics::GetMatrixView()
+{
+	D3DXMATRIX matrix;
+	pd3dDevice->GetTransform(D3DTS_VIEW, &matrix);
+	return matrix;
+}
+D3DXMATRIX Graphics::GetMatrixProjection()
+{
+	D3DXMATRIX matrix;
+	pd3dDevice->GetTransform(D3DTS_PROJECTION, &matrix);
+	return matrix;
+}
 

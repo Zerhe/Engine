@@ -1,12 +1,19 @@
 #include "MeshRenderer.h"
 
-MeshRenderer::MeshRenderer(Mesh* mesh)
+MeshRenderer::MeshRenderer(Frustum* frustum, Mesh* mesh)
 {
+	_frustum = frustum;
 	_mesh = mesh;
 }
 void MeshRenderer::Draw()
 {
-	_mesh->Draw();
+	//for (int i = 0; i < 2; i++)
+	//{
+		//if (_frustum->CheckPoint(_mesh->_boundingBox[i].x, _mesh->_boundingBox[i].y, _mesh->_boundingBox[i].z))
+		//{
+			_mesh->Draw();
+		//}
+	//}
 }
 void MeshRenderer::SetMesh(Mesh* mesh)
 {

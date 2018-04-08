@@ -61,6 +61,8 @@ public:
 	 void SetTransformCamera(D3DTRANSFORMSTATETYPE state, D3DMATRIX *matrix);
 	 D3DXMATRIX GetMatrixWorld();
 	 void SetMatrixWorld(D3DXMATRIX matrix);
+	 D3DXMATRIX GetMatrixView();
+	 D3DXMATRIX GetMatrixProjection();
 };
 #endif 
 

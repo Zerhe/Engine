@@ -9,7 +9,7 @@ Mesh::Mesh(Graphics* graficos, TextureManager* textureManager, LPCWSTR stringTex
 	//LoadOBJ();
 
 	/*  http://www.opengl-tutorial.org/es/beginners-tutorials/tutorial-7-model-loading/#cargando-el-obj tutorial loadOBJ*/
-
+	//GenerateBoundingBox();
 }
 void Mesh::Draw() {
 	GenerateBoundingBox();
@@ -130,21 +130,48 @@ bool Mesh::CompareVertex(CUSTOMVERTEXTEXTURE vertex01, CUSTOMVERTEXTEXTURE verte
 }
 void Mesh::GenerateBoundingBox()
 {
-	_boundingBox = new D3DXVECTOR3[8];
+	_boundingBox = new D3DXVECTOR3[2];
 
-	int j;
 	for (int i = 0; i < _vertexSize; i++)
 	{
-		j = 0;
-		if (_vertex[i].x < _boundingBox[j].x)
+		if (i = 0)
 		{
-			_boundingBox[j].x = _vertex[i].x;
+			_boundingBox[0].x = _vertex[0].x;
+			_boundingBox[0].y = _vertex[0].y;
+			_boundingBox[0].z = _vertex[0].z;
+			_boundingBox[1].x = _vertex[0].x;
+			_boundingBox[1].y = _vertex[0].y;
+			_boundingBox[1].z = _vertex[0].z;
 		}
-		j++;
-		if (_vertex[i].x < _boundingBox[j].x)
+		else
 		{
-			_boundingBox[j].x = _vertex[i].x;
+			if (_vertex[i].x < _boundingBox[0].x)
+			{
+				_boundingBox[0].x = _vertex[i].x;
+			}
+			else if (_vertex[i].x > _boundingBox[1].x)
+			{
+				_boundingBox[1].x = _vertex[i].x;
+			}
+
+			if (_vertex[i].y < _boundingBox[0].y)
+			{
+				_boundingBox[0].y = _vertex[i].y;
+			}
+			else if (_vertex[i].y > _boundingBox[1].y)
+			{
+				_boundingBox[1].y = _vertex[i].y;
+			}
+
+			if (_vertex[i].z < _boundingBox[0].z)
+			{
+				_boundingBox[0].z = _vertex[i].z;
+			}
+			else if (_vertex[i].z > _boundingBox[1].z)
+			{
+				_boundingBox[1].z = _vertex[i].z;
+			}
 		}
-		j++;
+
 	}
 }

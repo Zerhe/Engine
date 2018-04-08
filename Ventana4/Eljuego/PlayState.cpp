@@ -19,7 +19,7 @@ bool PlayState::onInit()
 	_spriteRenderer01 = new SpriteRenderer(_sprite01);
 	_spriteRenderer02 = new SpriteRenderer(_sprite02);
 	_spriteRenderer03 = new SpriteRenderer(_sprite03);
-	_meshRenderer = new MeshRenderer(_mesh);
+	_meshRenderer = new MeshRenderer(_frustum, _mesh);
 
 	_cameraObject->AddChild(_camera);
 	_zombie01->AddChild(_spriteRenderer01);
@@ -29,7 +29,6 @@ bool PlayState::onInit()
 	_cubo->AddChild(_meshRenderer);
 
 	_scene01->AddChild(_cameraObject);
-	
 	_scene01->AddChild(_lobo);
 	_scene01->AddChild(_cubo);
 	_scene01->AddChild(_zombie01);

@@ -20,10 +20,10 @@ class VENTANA4_API Mesh : public Entity3D
 	int _indexVertexSize;
 	LPDIRECT3DVERTEXBUFFER9	_vertexBuffer;
 	LPDIRECT3DINDEXBUFFER9 _indexBuffer;
-	D3DXVECTOR3* _boundingBox;
 	const char * _model;
 public:
 	Mesh(Graphics* graficos, TextureManager* textureManager, LPCWSTR stringTexture, const char * model);
+	D3DXVECTOR3* _boundingBox;
 	void Draw();
 	bool LoadOBJ();
 	bool CompareVertex(CUSTOMVERTEXTEXTURE vertex01, CUSTOMVERTEXTEXTURE vertex02);

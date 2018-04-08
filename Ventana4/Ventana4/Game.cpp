@@ -21,6 +21,7 @@ bool Game::startup(HINSTANCE hInstance) {
 	_graficos->SetupScene();
 	_timeMeter->FirstMeasure();
 	//_input->Initialize(hInstance, _ventanita->getHwnd());
+
 	return onInit();
 }
 void Game::loop() {
@@ -42,6 +43,7 @@ void Game::loop() {
 		_collisionManager->CheckCollision();
 		_graficos->Clear();
 		_graficos->Begin();
+		//_frustum->ConstructFrustum(1000.0f, _graficos->GetMatrixProjection(), _graficos->GetMatrixView());
 		onDraw();
 		_graficos->End();
 		_graficos->Present();
