@@ -7,13 +7,13 @@ MeshRenderer::MeshRenderer(Frustum* frustum, Mesh* mesh)
 }
 void MeshRenderer::Draw()
 {
-	//for (int i = 0; i < 2; i++)
-	//{
-		//if (_frustum->CheckPoint(_mesh->_boundingBox[i].x, _mesh->_boundingBox[i].y, _mesh->_boundingBox[i].z))
-		//{
+	for (int i = 0; i < 2; i++)
+	{
+		if (_frustum->CheckPoint(_mesh->_boundingBox[i].x, _mesh->_boundingBox[i].y, _mesh->_boundingBox[i].z))
+		{
 			_mesh->Draw();
-		//}
-	//}
+		}
+	}
 }
 void MeshRenderer::SetMesh(Mesh* mesh)
 {

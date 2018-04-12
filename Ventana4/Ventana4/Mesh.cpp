@@ -9,7 +9,6 @@ Mesh::Mesh(Graphics* graficos, TextureManager* textureManager, LPCWSTR stringTex
 	//LoadOBJ();
 
 	/*  http://www.opengl-tutorial.org/es/beginners-tutorials/tutorial-7-model-loading/#cargando-el-obj tutorial loadOBJ*/
-	//GenerateBoundingBox();
 }
 void Mesh::Draw() {
 	GenerateBoundingBox();
