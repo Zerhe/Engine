@@ -22,6 +22,7 @@ class PlayState : public Game {
 	GameObject* _zombie02;
 	GameObject* _lobo;
 	GameObject* _cubo;
+	GameObject* _objectEmpty;
 	Camera* _camera;
 	Sprite* _sprite01;
 	Sprite* _sprite02;

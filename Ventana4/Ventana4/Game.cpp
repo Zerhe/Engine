@@ -8,6 +8,7 @@ bool Game::startup(HINSTANCE hInstance) {
 	_timeMeter = new TimeMeter();
 	_collisionManager = new CollisionManager();
 	_input = new Input();
+	_frustum = new Frustum();
 	int _width = 800;
 	int _height = 600;
 

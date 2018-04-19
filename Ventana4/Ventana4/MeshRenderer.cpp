@@ -9,9 +9,11 @@ void MeshRenderer::Draw()
 {
 	for (int i = 0; i < 2; i++)
 	{
+		_mesh->GenerateBoundingBox();
 		if (_frustum->CheckPoint(_mesh->_boundingBox[i].x, _mesh->_boundingBox[i].y, _mesh->_boundingBox[i].z))
 		{
 			_mesh->Draw();
+			break;
 		}
 	}
 }

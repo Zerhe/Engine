@@ -8,6 +8,7 @@ bool PlayState::onInit()
 	_zombie02 = new GameObject(_graficos, 200, 200, 0, 0, 0, 0, 1, 1, 1);
 	_lobo = new GameObject(_graficos, 400, 500, 0, 0, 0, 0, 1, 1, 1);
 	_cubo = new GameObject(_graficos, 300, 300, 0, 0, 0, 0, 100, 100, 100);
+	_objectEmpty = new GameObject(_graficos, 400, 500, 0, 0, 0, 0, 1, 1, 1);
 
 	_camera = new Camera(_graficos, 800.0f, 600.0f);
 	_sprite01 = new Sprite(_graficos, _textureManager, 200.0f, 312.0f, Square, 0.0f, L"../Walk2.png", 2000.0f, 312.0f);

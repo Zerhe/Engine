@@ -11,8 +11,6 @@ Mesh::Mesh(Graphics* graficos, TextureManager* textureManager, LPCWSTR stringTex
 	/*  http://www.opengl-tutorial.org/es/beginners-tutorials/tutorial-7-model-loading/#cargando-el-obj tutorial loadOBJ*/
 }
 void Mesh::Draw() {
-	GenerateBoundingBox();
-
 	_graficos->BindTexture(_texture->getTexture());
 	_graficos->pd3dDevice->SetFVF(D3DFVF_CUSTOMVERTEXTEXTURE);
 	_graficos->pd3dDevice->SetIndices(_indexBuffer);

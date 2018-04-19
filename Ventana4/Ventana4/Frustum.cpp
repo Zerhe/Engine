@@ -1,27 +1,15 @@
 #include "Frustum.h"
 
-Frustum::Frustum() 
-{
-
-}
-Frustum::Frustum(const Frustum&)
-{
-
-}
-Frustum::~Frustum()
-{
-
-}
 void Frustum::ConstructFrustum(float screenDepth, D3DXMATRIX projectionMatrix, D3DXMATRIX viewMatrix)
 {
 	float zMinimum, r;
 	D3DXMATRIX matrix;
 
-	// Calculate the minimum Z distance in the frustum.
+	/* Calculate the minimum Z distance in the frustum.
 	zMinimum = -projectionMatrix._43 / projectionMatrix._33;
 	r = screenDepth / (screenDepth - zMinimum);
 	projectionMatrix._33 = r;
-	projectionMatrix._43 = -r * zMinimum;
+	projectionMatrix._43 = -r * zMinimum;*/
 
 	// Create the frustum matrix from the view matrix and updated projection matrix.
 	D3DXMatrixMultiply(&matrix, &viewMatrix, &projectionMatrix);

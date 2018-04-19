@@ -5,10 +5,6 @@
 class Frustum 
 {
 public:
-	Frustum();
-	Frustum(const Frustum&);
-	~Frustum();
-
 	void ConstructFrustum(float, D3DXMATRIX, D3DXMATRIX);
 
 	bool CheckPoint(float, float, float);
