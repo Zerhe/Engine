@@ -131,7 +131,7 @@ void Mesh::GenerateBoundingBox()
 
 	for (int i = 0; i < _vertexSize; i++)
 	{
-		if (i = 0)
+		if (i == 0)
 		{
 			_boundingBox[0].x = _vertex[0].x;
 			_boundingBox[0].y = _vertex[0].y;

@@ -29,3 +29,13 @@
 *.exe
 *.out
 *.app
+
+# Folders
+[Dd]ebug/
+[Dd]ebug/
+[Rr]elease/
+[Rr]eleases/
+[Oo]bj/
+[Ll]og/
+icph/
+
