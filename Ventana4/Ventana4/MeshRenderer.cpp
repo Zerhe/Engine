@@ -13,7 +13,7 @@ void MeshRenderer::Draw()
 		if (_frustum->CheckPoint(_mesh->_boundingBox[i].x, _mesh->_boundingBox[i].y, _mesh->_boundingBox[i].z))
 		{
 			_mesh->Draw();
-			break;
+			return;
 		}
 	}
 }

@@ -44,7 +44,7 @@ void Game::loop() {
 		_collisionManager->CheckCollision();
 		_graficos->Clear();
 		_graficos->Begin();
-		_frustum->ConstructFrustum(1000.0f, _graficos->GetMatrixProjection(), _graficos->GetMatrixView());
+		
 		onDraw();
 		_graficos->End();
 		_graficos->Present();

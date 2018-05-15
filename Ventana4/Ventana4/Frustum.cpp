@@ -126,3 +126,7 @@ bool Frustum::CheckRectangle(float xCenter, float yCenter, float zCenter, float 
 	}
 	return true;
 }
+void Frustum::Lalala()
+{
+
+}

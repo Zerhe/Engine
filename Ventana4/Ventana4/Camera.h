@@ -20,11 +20,14 @@ public:
 	D3DXVECTOR3 _pos;
 	Camera(Graphics* graficos, float widthViewport, float heightViewport);
 	void SetCamera(char type, float fov, float nearClip, float farClip);
-	void MovCamera();
+	void PosUpdate();
 	void Yaw(float angle);
 	void Pitch(float angle);
 	void Roll(float angle);
 	void Draw();
+	D3DXMATRIX GetMatrixView();
+	D3DXMATRIX GetMatrixProj();
+
 };
 #endif
 

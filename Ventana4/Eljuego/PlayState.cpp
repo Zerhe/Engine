@@ -43,6 +43,8 @@ bool PlayState::onInit()
 }
 void PlayState::onDraw() 
 {
+	_frustum->ConstructFrustum(1000.0f, _camera->GetMatrixProj(), _camera->GetMatrixView());
+
 	if (_scene01)
 		_scene01->Draw();
 }
