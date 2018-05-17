@@ -97,7 +97,10 @@ bool PlayState::onUpdate()
 		//_camera->Pitch(1.0f * _timeMeter->GetDT()); // Roto en x la camara
 		_contador = 0;
 	}
-	_camera->_pos.x-= 10.0 * _timeMeter->GetDT();   // Muevo en x la camara
+
+	if(_input->keyPressing(DIK_RIGHTARROW))
+		_camera->_pos.x -= 40.0 * _timeMeter->GetDT();   // Muevo en x la camara
+
 	_zombie01->transform.position->x -= 100.0 * _timeMeter->GetDT();
 	if (_zombie01->transform.position->x < -1000)
 		_zombie01->transform.position->x = 800;
