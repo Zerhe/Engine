@@ -20,6 +20,9 @@ public:
 	D3DXVECTOR3 _pos;
 	Camera(Graphics* graficos, float widthViewport, float heightViewport);
 	void SetCamera(char type, float fov, float nearClip, float farClip);
+	void SumX(float num);
+	void SumY(float num);
+	void SumZ(float num);
 	void PosUpdate();
 	void Yaw(float angle);
 	void Pitch(float angle);

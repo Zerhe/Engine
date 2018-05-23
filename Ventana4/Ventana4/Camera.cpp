@@ -26,6 +26,22 @@ void Camera::SetCamera(char type, float fov, float nearClip, float farClip)
 	
 	_graficos->SetTransformCamera(D3DTS_PROJECTION, &_matProj);
 }
+void Camera::SumX(float num)
+{
+	_pos.x += num;
+	PosUpdate();
+}
+void Camera::SumY(float num)
+{
+	_pos.y += num;
+	PosUpdate();
+}
+void Camera::SumZ(float num)
+{
+	_pos.z += num;
+	PosUpdate();
+
+}
 void Camera::PosUpdate()
 {
 	D3DXVECTOR3 _lookPos(_pos.x, _pos.y, _pos.z);
@@ -65,7 +81,7 @@ void Camera::Roll(float angle)
 }
 void Camera::Draw() 
 {
-	PosUpdate();
+	//PosUpdate();
 }
 D3DXMATRIX Camera::GetMatrixView()
 {
