@@ -40,7 +40,6 @@ void Camera::SumZ(float num)
 {
 	_pos.z += num;
 	PosUpdate();
-
 }
 void Camera::PosUpdate()
 {

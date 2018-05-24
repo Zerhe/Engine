@@ -11,10 +11,10 @@ bool PlayState::onInit()
 	_objectEmpty = new GameObject(_graficos, 400, 500, 0, 0, 0, 0, 1, 1, 1);
 
 	_camera = new Camera(_graficos, 800.0f, 600.0f);
-	_sprite01 = new Sprite(_graficos, _textureManager, 200.0f, 312.0f, Square, 0.0f, L"../Walk2.png", 2000.0f, 312.0f);
-	_sprite02 = new Sprite(_graficos, _textureManager, 200.0f, 312.0f, Square, 0.0f, L"../Walk2.png", 2000.0f, 312.0f);
-	_sprite03 = new Sprite(_graficos, _textureManager, 200.0f, 200.0f, Square, 0.0f, L"../Wolf.png", 800.0f, 772.0f);
-	_mesh = new Mesh(_graficos, _textureManager, L"../Estrella.png", "../cube.obj");
+	_sprite01 = new Sprite(_graficos, _textureManager, 200.0f, 312.0f, Square, 0.0f, L"Assets/Walk2.png", 2000.0f, 312.0f);
+	_sprite02 = new Sprite(_graficos, _textureManager, 200.0f, 312.0f, Square, 0.0f, L"Assets//Walk2.png", 2000.0f, 312.0f);
+	_sprite03 = new Sprite(_graficos, _textureManager, 200.0f, 200.0f, Square, 0.0f, L"Assets//Wolf.png", 800.0f, 772.0f);
+	_mesh = new Mesh(_graficos, _textureManager, L"Assets//Estrella.png", "Assets//cube.obj");
 	_mesh->LoadOBJ();
 
 	_spriteRenderer01 = new SpriteRenderer(_sprite01);
@@ -99,7 +99,9 @@ bool PlayState::onUpdate()
 	}
 
 	if(_input->keyPressing(DIK_RIGHTARROW))
-		_camera->_pos.x -= 40.0 * _timeMeter->GetDT();   // Muevo en x la camara
+		_camera->SumX(-40.0 * _timeMeter->GetDT());   // Muevo en x la camara
+	if (_input->keyPressing(DIK_LEFTARROW))
+		_camera->SumX(40.0 * _timeMeter->GetDT());   // Muevo en x la camara
 
 	_zombie01->transform.position->x -= 100.0 * _timeMeter->GetDT();
 	if (_zombie01->transform.position->x < -1000)
