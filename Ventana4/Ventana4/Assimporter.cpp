@@ -2,7 +2,7 @@
 
 bool Assimporter::LoadFile(const std::string& pFile)
 {
-	Importer importer;
+	Assimp::Importer importer;
 
 	const aiScene* scene = importer.ReadFile(pFile,
 		aiProcess_CalcTangentSpace |
@@ -15,5 +15,5 @@ bool Assimporter::LoadFile(const std::string& pFile)
 	{
 		importer.GetErrorString();
 	}
-
+	return true;
 }
