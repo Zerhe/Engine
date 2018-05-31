@@ -1,5 +1,8 @@
 #include "GameObject.h"
-
+GameObject::GameObject(Graphics* graficos)
+{
+	_graficos = graficos;
+}
 GameObject::GameObject(Graphics* graficos,
 	float posX, float posY, float posZ,
 	float rotX, float rotY, float rotZ,
