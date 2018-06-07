@@ -4,7 +4,7 @@ Assimporter::Assimporter(Graphics* graficos)
 {
 	_graficos = graficos;
 }
-bool Assimporter::LoadFile(const std::string& pFile)
+GameObject* Assimporter::LoadFile(const std::string& pFile)
 {
 	Assimp::Importer importer;
 
@@ -21,31 +21,33 @@ bool Assimporter::LoadFile(const std::string& pFile)
 	}
 	GameObject* objetoPadre = new GameObject(_graficos);
 
+	CopyNodesWithMeshes(scene->mRootNode, objetoPadre);
 
-
-	return true;
+	return objetoPadre;
 }
-void CopyNodesWithMeshes(aiNode node, SceneObject targetParent)
+void Assimporter::CopyNodesWithMeshes(aiNode* node, GameObject* targetParent)
 {
 	GameObject* parent;
 	// if node has meshes, create a new scene object for it
-	if (node.mNumMeshes > 0)
+	if (node->mNumMeshes > 0)
 	{
-		GameObject* newObject = new GameObject();
-		targetParent.addChild(newObject);
+		GameObject* newObject = new GameObject(_graficos);
+		targetParent->AddChild(newObject);
 		// copy the meshes
-		CopyMeshes(node, newObject);
+		//CopyMeshes(node, newObject); copiar el mesh del nodo al gameobject
 		// the new object is the parent for all child nodes
 		parent = newObject;
-		transform.SetUnity();
+		//transform.SetUnity(); guardar la transformacion del nodo en el gameobject
 	}
 	else
 	{
 		// if no meshes, skip the node, but keep its transformation
-		parent = targetParent;
-		transform = node.mTransformation * accTransform;
+		GameObject* newObject = new GameObject(_graficos);
+		targetParent->AddChild(newObject);
+		parent = newObject;
+		//transform = node.mTransformation * accTransform; guardar la transformacion del nodo en el gameobject
 	}
 	// continue for all child nodes
-	for (all node.mChildren)
-		CopyNodesWithMeshes(node.mChildren[a], parent, transform);
+	for (int i = 0; i < node->mNumChildren; i++)
+		CopyNodesWithMeshes(node->mChildren[i], parent);
 }
