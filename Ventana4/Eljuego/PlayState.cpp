@@ -99,9 +99,9 @@ bool PlayState::onUpdate()
 	}
 
 	if(_input->keyPressing(DIK_RIGHTARROW))
-		_camera->SumX(-40.0 * _timeMeter->GetDT());   // Muevo en x la camara
-	if (_input->keyPressing(DIK_LEFTARROW))
 		_camera->SumX(40.0 * _timeMeter->GetDT());   // Muevo en x la camara
+	if (_input->keyPressing(DIK_LEFTARROW))
+		_camera->SumX(-40.0 * _timeMeter->GetDT());   // Muevo en x la camara
 
 	_zombie01->transform.position->x -= 100.0 * _timeMeter->GetDT();
 	if (_zombie01->transform.position->x < -1000)

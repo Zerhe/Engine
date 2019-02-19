@@ -19,5 +19,6 @@ public:
 		float scaX, float scaY, float scaZ);
 	Transform transform;
 	void Draw();
+	Node* GetComponent(const char* type);
 };
 #endif

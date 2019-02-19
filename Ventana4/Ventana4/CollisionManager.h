@@ -7,7 +7,7 @@
 #include "Entity2D.h"
 using namespace std;
 
-
+//Cambiar Entity2D por GameObject
 
 class VENTANA4_API CollisionManager{
 	list <Entity2D*> group01;

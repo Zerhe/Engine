@@ -12,6 +12,7 @@ Camera::Camera(Graphics* graficos, float widthViewport, float heightViewport)
 	_forward.x = 0.0f; _forward.y = 0.0f; _forward.z = 1.0f;
 	_up.x = 0.0f; _up.y = 1.0f; _up.z = 0.0f;
 	_right.x = 1.0f; _right.y = 0.0f; _right.z = 0.0f;
+	PosUpdate();
 }
 void Camera::SetCamera(char type, float fov, float nearClip, float farClip) 
 {

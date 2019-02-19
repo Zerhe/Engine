@@ -1,10 +1,10 @@
 #include "Assimporter.h"
 
-Assimporter::Assimporter(Graphics* graficos)
+/*Assimporter::Assimporter(Graphics* graficos)
 {
 	_graficos = graficos;
 }
-bool Assimporter::LoadFile(const std::string& pFile)
+/*bool Assimporter::LoadFile(const std::string& pFile)
 {
 	Assimp::Importer importer;
 
@@ -24,15 +24,15 @@ bool Assimporter::LoadFile(const std::string& pFile)
 
 
 	return true;
-}
-void CopyNodesWithMeshes(aiNode node, SceneObject targetParent)
+}*/
+/*void Assimporter::CopyNodesWithMeshes(aiNode node, GameObject targetParent)
 {
 	GameObject* parent;
 	// if node has meshes, create a new scene object for it
 	if (node.mNumMeshes > 0)
 	{
 		GameObject* newObject = new GameObject();
-		targetParent.addChild(newObject);
+		targetParent.AddChild(newObject);
 		// copy the meshes
 		CopyMeshes(node, newObject);
 		// the new object is the parent for all child nodes
@@ -48,4 +48,4 @@ void CopyNodesWithMeshes(aiNode node, SceneObject targetParent)
 	// continue for all child nodes
 	for (all node.mChildren)
 		CopyNodesWithMeshes(node.mChildren[a], parent, transform);
-}
+}*/

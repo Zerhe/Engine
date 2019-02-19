@@ -7,13 +7,13 @@
 #include "GameObject.h"
 #include "Graphics.h"
 
-class VENTANA4_API Assimporter
+/*class VENTANA4_API Assimporter
 {
 	Graphics* _graficos;
 
 	Assimporter(Graphics* graficos);
-	bool LoadFile(const std::string& pFile);
-	void CopyNodesWithMeshes(aiNode node, SceneObject targetParent);
-};
+	//bool LoadFile(const std::string& pFile);
+	//void CopyNodesWithMeshes(aiNode node, GameObject targetParent);
+};*/
 
 #endif

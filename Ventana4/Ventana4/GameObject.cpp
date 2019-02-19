@@ -25,3 +25,14 @@ void GameObject::Draw()
 	_graficos->SetMatrixWorld(_graficos->matrices.top());
 	_graficos->matrices.pop();
 }
+Node* GameObject::GetComponent(const char* type)
+{
+	for (int i = 0; i < childs->size(); i++)
+	{
+		if (typeid((*childs)[i]).name() == type)
+		{
+			return (*childs)[i];
+		}
+	}
+	return NULL;
+}
