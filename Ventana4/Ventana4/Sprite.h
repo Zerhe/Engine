@@ -21,8 +21,6 @@ public:
 	Sprite(Graphics* graficos, TextureManager* textureManager, float width, float height, CollType collType, float r, LPCWSTR stringTexture, float textureWidth, float textureHeight);
 	void Draw();
 	void SetUv(/*float x, float y,*/ float width, float height, int framesAncho);
-	void LaterFrame();
-	void OnCollision(Entity2D *entidad);
-	void Penetration(Entity2D *entidad);
+	void LaterFrame();	
 };
 #endif

@@ -1,7 +1,12 @@
 #include "SpriteRenderer.h"
 
+SpriteRenderer::SpriteRenderer()
+{
+	type = "SpriteRenderer";
+}
 SpriteRenderer::SpriteRenderer(Sprite* sprite)
 {
+	type = "SpriteRenderer";
 	_sprite = sprite;
 }
 void SpriteRenderer::Draw()

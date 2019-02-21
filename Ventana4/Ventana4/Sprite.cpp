@@ -50,29 +50,3 @@ void Sprite::LaterFrame()
 {
 	_frame++;
 }
-void Sprite::OnCollision(Entity2D *entidad)
-{
-	Penetration(entidad);
-	if (_inamovible == false)
-	{
-		// hacer algo cuando coliciona 
-	}
-}
-void Sprite::Penetration(Entity2D *entidad)
-{
-	/*if (entidad->_inamovible)
-	{
-		if (_x < entidad->_x)
-			_x = entidad->_x - _width;
-		else if (_x > entidad->_x)
-			_x = entidad->_x + _width;
-	}
-	if (entidad->_inamovible == false)
-	{
-		if (entidad->_x < _x)
-			entidad->_x = _x - entidad->_width;
-		else if (entidad->_x > _x)
-			entidad->_x = _x + entidad->_width;
-	}*/
-	//entidad->_mass
-}

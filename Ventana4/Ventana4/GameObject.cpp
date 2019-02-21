@@ -25,14 +25,22 @@ void GameObject::Draw()
 	_graficos->SetMatrixWorld(_graficos->matrices.top());
 	_graficos->matrices.pop();
 }
-Node* GameObject::GetComponent(const char* type)
+Node* GameObject::GetComponent(const char* typeSearch)
 {
 	for (int i = 0; i < childs->size(); i++)
 	{
-		if (typeid((*childs)[i]).name() == type)
+		const char* type = (*childs)[i]->type;
+		if (type == typeSearch)
 		{
 			return (*childs)[i];
 		}
 	}
 	return NULL;
+}
+void GameObject::OnCollision(GameObject* entidad)
+{
+	if (_inamovible == false)
+	{
+		// hacer algo cuando coliciona 
+	}
 }

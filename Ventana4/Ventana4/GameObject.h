@@ -5,6 +5,7 @@
 #include "Node.h"
 #include "Component.h"
 #include "Transform.h"
+#include "SpriteRenderer.h"
 
 using namespace std;
 
@@ -18,7 +19,10 @@ public:
 		float rotX, float rotY, float rotZ,
 		float scaX, float scaY, float scaZ);
 	Transform transform;
+	bool _inamovible = false;
+	int _mass;
 	void Draw();
-	Node* GetComponent(const char* type);
+	Node* GetComponent(const char* typeSearch);
+	void OnCollision(GameObject* entidad);
 };
 #endif

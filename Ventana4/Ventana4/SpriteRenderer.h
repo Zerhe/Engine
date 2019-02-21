@@ -10,6 +10,7 @@ class VENTANA4_API SpriteRenderer : public Component
 {
 	Sprite* _sprite;
 public:
+	SpriteRenderer();
 	SpriteRenderer(Sprite* mesh);
 	void Draw();
 	void SetSprite(Sprite* mesh);

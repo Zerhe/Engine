@@ -26,18 +26,20 @@ bool PlayState::onInit()
 	_zombie01->AddChild(_spriteRenderer01);
 	_zombie02->AddChild(_spriteRenderer02);
 	_lobo->AddChild(_spriteRenderer03);
-	_lobo->AddChild(_zombie02);
+	//_lobo->AddChild(_zombie02);
 	_cubo->AddChild(_meshRenderer);
 
 	_scene01->AddChild(_cameraObject);
 	_scene01->AddChild(_lobo);
 	_scene01->AddChild(_cubo);
 	_scene01->AddChild(_zombie01);
+	_scene01->AddChild(_zombie02);
 
-	_collisionManager->Register(_sprite01, 1);
-	_collisionManager->Register(_sprite02, 2);
-	_sprite01->_inamovible = false;
-	_sprite02->_inamovible = false;
+
+	_collisionManager->Register(_zombie01, 1);
+	_collisionManager->Register(_zombie02, 2);
+	_zombie01->_inamovible = false;
+	_zombie02->_inamovible = false;
 
 	return true;
 }

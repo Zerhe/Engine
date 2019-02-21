@@ -1,6 +1,6 @@
 #include "CollisionManager.h"
 
-bool CollisionManager::Register(Entity2D* entity, int group)
+bool CollisionManager::Register(GameObject* entity, int group)
 {
 	switch (group)
 	{
@@ -13,7 +13,7 @@ bool CollisionManager::Register(Entity2D* entity, int group)
 	}
 	return true;
 }
-bool CollisionManager::UnRegister(Entity2D* entity, int group)
+bool CollisionManager::UnRegister(GameObject* entity, int group)
 {
 	switch (group)
 	{
@@ -31,34 +31,39 @@ void CollisionManager::CheckCollision()
 {
 	for (iter01 = group01.begin(); iter01 != group01.end(); iter01++)
 	{
-		//x1 = (*iter01)->_x;    Arreglar la colicion
-		//y1 = (*iter01)->_y;    Arreglar la colicion
+		x1 = (*iter01)->transform.position->x;
+		y1 = (*iter01)->transform.position->y;
 
 		for (iter02 = group02.begin(); iter02 != group02.end(); iter02++)
 		{
-			//x2 = (*iter02)->_x;    Arreglar la colicion
-			//y2 = (*iter02)->_y    Arreglar la colicion
+			x2 = (*iter02)->transform.position->x;
+			y2 = (*iter02)->transform.position->y;
 
-			if ((*iter01)->_collType == Square && (*iter02)->_collType == Square)
+			sr01 = static_cast<SpriteRenderer*>((*iter01)->GetComponent("SpriteRenderer"))->GetSprite();
+			sr02 = static_cast<SpriteRenderer*>((*iter02)->GetComponent("SpriteRenderer"))->GetSprite();
+
+			if ( sr01->_collType == Square && sr02->_collType == Square)
 			{
-				width1 = (*iter01)->_collWidth;
-				width2 = (*iter02)->_collWidth;
-				height1 = (*iter01)->_collHeight;
-				height2 = (*iter02)->_collHeight;
+				width1 = sr01->_collWidth;
+				width2 = sr02->_collWidth;
+				height1 = sr01->_collHeight;
+				height2 = sr02->_collHeight;
 
 				if (abs(x2 - x1)  < (width2 + width1) / 2.0f && abs(y2 - y1) < (height2 + height1) / 2.0f)
 				{
+					Penetration();
 					(*iter01)->OnCollision((*iter02));
 					(*iter02)->OnCollision((*iter01));
 				}
 			}
-			if ((*iter01)->_collType == Circle && (*iter02)->_collType == Circle)
+			if (sr01->_collType == Circle && sr02->_collType == Circle)
 			{
-				r1 = (*iter01)->_r;
-				r2 = (*iter02)->_r;
+				r1 = sr01->_r;
+				r2 = sr02->_r;
 
 				if ((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1) <= (r2 + r1) * (r2 + r1))
 				{
+					Penetration();
 					(*iter01)->OnCollision((*iter02));
 					(*iter02)->OnCollision((*iter01));
 				}
@@ -66,4 +71,22 @@ void CollisionManager::CheckCollision()
 
 		}
 	}
+}
+void CollisionManager::Penetration()
+{
+	if ((*iter02)->_inamovible)
+	{
+		if (x1 < x2)
+			(*iter01)->transform.position->x = x2 - width1;
+		else if (x1 > x2)
+			(*iter01)->transform.position->x = x2 + width1;
+	}
+	else
+	{
+		if (x2 < x1)
+			(*iter02)->transform.position->x = x1 - width2;
+		else if (x2 > x1)
+			(*iter02)->transform.position->x = x1 + width2;
+	}
+	//entidad->_mass
 }

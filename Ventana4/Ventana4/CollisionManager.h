@@ -4,20 +4,21 @@
 #include <windows.h>
 #include <string>
 #include <list>
-#include "Entity2D.h"
+#include "GameObject.h"
+#include "SpriteRenderer.h"
 using namespace std;
 
 //Cambiar Entity2D por GameObject
 
 class VENTANA4_API CollisionManager{
-	list <Entity2D*> group01;
-	list <Entity2D*> group02;
-	list<Entity2D*>::iterator iterBeginGroup01 = group01.begin();
-	list<Entity2D*>::iterator iterBeginGroup02 = group02.begin();
-	list<Entity2D*>::iterator iterEndGroup01 = group01.end();
-	list<Entity2D*>::iterator iterEndGroup02 = group02.end();
-	list<Entity2D*>::iterator iter01;
-	list<Entity2D*>::iterator iter02;
+	list <GameObject*> group01;
+	list <GameObject*> group02;
+	list<GameObject*>::iterator iterBeginGroup01 = group01.begin();
+	list<GameObject*>::iterator iterBeginGroup02 = group02.begin();
+	list<GameObject*>::iterator iterEndGroup01 = group01.end();
+	list<GameObject*>::iterator iterEndGroup02 = group02.end();
+	list<GameObject*>::iterator iter01;
+	list<GameObject*>::iterator iter02;
 	float x1 = 0;
 	float x2 = 0;
 	float y1 = 0;
@@ -28,12 +29,15 @@ class VENTANA4_API CollisionManager{
 	float width2 = 0;
 	float height1 = 0;
 	float height2 = 0;
+	Sprite* sr01;
+	Sprite* sr02;
 
 public:
-	bool Register(Entity2D* entity, int group);
-	bool UnRegister(Entity2D* entity, int group);
+	bool Register(GameObject* entity, int group);
+	bool UnRegister(GameObject* entity, int group);
 	void Clear();
 	void CheckCollision();
+	void Penetration();
 };
 
 #endif

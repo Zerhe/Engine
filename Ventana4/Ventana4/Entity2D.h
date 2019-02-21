@@ -22,10 +22,6 @@ public:
 	CollType _collType = Circle;
 	float _collWidth = 0;
 	float _collHeight = 0;
-	bool _inamovible = false;
-	int _mass;
-	//void Transform(Graphics *graficos);
-	virtual void OnCollision(Entity2D *entidad) {};
 };
 
 #endif
