@@ -17,11 +17,11 @@ public:
 <<<<<<< HEAD
 	//bool LoadFile(const std::string& pFile);
 	//void CopyNodesWithMeshes(aiNode node, GameObject targetParent);
-};*/
+};
 =======
 	GameObject* LoadFile(const std::string& pFile);
 	void CopyNodesWithMeshes(aiNode* node, GameObject* targetParent);
 };
 >>>>>>> 235022ba36d40fc6fefbbb4d49afb30a8d0b8408
-
+*/
 #endif

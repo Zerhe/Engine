@@ -67,9 +67,10 @@ void Assimporter::CopyNodesWithMeshes(aiNode* node, GameObject* targetParent)
 <<<<<<< HEAD
 	for (all node.mChildren)
 		CopyNodesWithMeshes(node.mChildren[a], parent, transform);
-}*/
+}
 =======
 	for (int i = 0; i < node->mNumChildren; i++)
 		CopyNodesWithMeshes(node->mChildren[i], parent);
 }
 >>>>>>> 235022ba36d40fc6fefbbb4d49afb30a8d0b8408
+*/
