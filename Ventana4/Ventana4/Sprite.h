@@ -16,11 +16,13 @@ class VENTANA4_API Sprite : public Entity2D {
 	CUSTOMVERTEXTEXTURE* _vertices;
 	int _frame;
 public:
+	int _cantFrames;
+	int _flipX = 1;
 	float _textureWidth = 0;
 	float _textureHeight = 0;;
-	Sprite(Graphics* graficos, TextureManager* textureManager, float width, float height, CollType collType, float r, LPCWSTR stringTexture, float textureWidth, float textureHeight);
+	Sprite(Graphics* graficos, TextureManager* textureManager, float width, float height, CollType collType, float r, LPCWSTR stringTexture, float textureWidth, float textureHeight, int cantFrames);
 	void Draw();
-	void SetUv(/*float x, float y,*/ float width, float height, int framesAncho);
-	void LaterFrame();	
+	void LaterFrame();
+	void FlipX(bool flipx);
 };
 #endif

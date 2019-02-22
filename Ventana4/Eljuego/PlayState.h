@@ -20,17 +20,20 @@ class PlayState : public Game {
 	GameObject* _cameraObject;
 	GameObject* _zombie01;
 	GameObject* _zombie02;
-	GameObject* _lobo;
+	GameObject* _sol;
+	GameObject* _piedra;
 	GameObject* _cubo;
 	GameObject* _objectEmpty;
 	Camera* _camera;
 	Sprite* _sprite01;
 	Sprite* _sprite02;
 	Sprite* _sprite03;
+	Sprite* _sprite04;
 	Mesh* _mesh;
 	SpriteRenderer* _spriteRenderer01;
 	SpriteRenderer* _spriteRenderer02;
 	SpriteRenderer* _spriteRenderer03;
+	SpriteRenderer* _spriteRenderer04;
 	MeshRenderer* _meshRenderer;
 	
 	int _contador = 0;

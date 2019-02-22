@@ -27,6 +27,13 @@ void Camera::SetCamera(char type, float fov, float nearClip, float farClip)
 	
 	_graficos->SetTransformCamera(D3DTS_PROJECTION, &_matProj);
 }
+void Camera::SetPosicion(float x, float y, float z)
+{
+	_pos.x = x;
+	_pos.y = y;
+	_pos.z = z;
+	PosUpdate();
+}
 void Camera::SumX(float num)
 {
 	_pos.x += num;
