@@ -12,6 +12,7 @@
 #include "../Ventana4/Mesh.h"
 #include "../Ventana4/Camera.h"
 #include "../Ventana4/Cube.h"
+#include "../Ventana4/Map.h"
 
 using namespace std;
 
@@ -29,7 +30,10 @@ class PlayState : public Game {
 	Sprite* _sprite02;
 	Sprite* _sprite03;
 	Sprite* _sprite04;
+	Sprite* _sprite05;
+	Sprite* _sprite06;
 	Mesh* _mesh;
+	Map* _map;
 	SpriteRenderer* _spriteRenderer01;
 	SpriteRenderer* _spriteRenderer02;
 	SpriteRenderer* _spriteRenderer03;

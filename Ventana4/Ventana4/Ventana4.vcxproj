@@ -176,6 +176,7 @@ xcopy "$(SolutionDir)Ventana4\Libraries\Assimp\bin\assimp32-d.pdb" "$(SolutionDi
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="Input.cpp" />
+    <ClCompile Include="Map.cpp" />
     <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="MeshRenderer.cpp" />
     <ClCompile Include="Node.cpp" />
@@ -203,6 +204,7 @@ xcopy "$(SolutionDir)Ventana4\Libraries\Assimp\bin\assimp32-d.pdb" "$(SolutionDi
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Graphics.h" />
     <ClInclude Include="Input.h" />
+    <ClInclude Include="Map.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="MeshRenderer.h" />
     <ClInclude Include="Node.h" />

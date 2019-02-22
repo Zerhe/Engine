@@ -4,10 +4,10 @@ bool PlayState::onInit()
 {
 	_scene01 = new Scene(_graficos);
 	_cameraObject = new GameObject(_graficos, 0, 0, 0, 0, 0, 0, 1, 1, 1);
-	_zombie01 = new GameObject(_graficos, 600, 200, 0, 0, 0, 0, 1, 1, 1);
-	_zombie02 = new GameObject(_graficos, 200, 200, 0, 0, 0, 0, 1, 1, 1);
-	_sol = new GameObject(_graficos, 400, 500, 0, 0, 0, 0, 1, 1, 1);
-	_piedra = new GameObject(_graficos, 800, 165, 0, 0, 0, 0, 1, 1, 1);
+	_zombie01 = new GameObject(_graficos, 600, 180, 0, 0, 0, 0, 1, 1, 1);
+	_zombie02 = new GameObject(_graficos, 200, 180, 0, 0, 0, 0, 1, 1, 1);
+	_sol = new GameObject(_graficos, 700, 500, 0, 0, 0, 0, 1, 1, 1);
+	_piedra = new GameObject(_graficos, 800, 160, 0, 0, 0, 0, 1, 1, 1);
 	_cubo = new GameObject(_graficos, 200, 400, 0, 0, 0, 0, 100, 100, 100);
 	_objectEmpty = new GameObject(_graficos, 400, 500, 0, 0, 0, 0, 1, 1, 1);
 
@@ -16,8 +16,11 @@ bool PlayState::onInit()
 	_sprite02 = new Sprite(_graficos, _textureManager, 75.0f, 150.0f, Square, 0.0f, L"Assets//Walk2.png", 2000.0f, 312.0f, 10);
 	_sprite03 = new Sprite(_graficos, _textureManager, 200.0f, 200.0f, Square, 0.0f, L"Assets//Sun.png", 260.0f, 260.0f, 1);
 	_sprite04 = new Sprite(_graficos, _textureManager, 75.0f, 100.0f, Square, 0.0f, L"Assets//Rock.png", 260.0f, 260.0f, 1);
+	_sprite05 = new Sprite(_graficos, _textureManager, 75.0f, 75.0f, Square, 0.0f, L"Assets//Dirt.png", 260.0f, 260.0f, 1);
+	_sprite06 = new Sprite(_graficos, _textureManager, 75.0f, 75.0f, Square, 0.0f, L"Assets//Sky.jpg", 260.0f, 260.0f, 1);
 	_mesh = new Mesh(_graficos, _textureManager, L"Assets//Estrella.png", "Assets//cube.obj");
 	_mesh->LoadOBJ();
+	_map = new Map(_graficos, 0, 600, _sprite05, _sprite06);
 
 	_spriteRenderer01 = new SpriteRenderer(_sprite01);
 	_spriteRenderer02 = new SpriteRenderer(_sprite02);
@@ -54,6 +57,8 @@ bool PlayState::onInit()
 void PlayState::onDraw() 
 {
 	_frustum->ConstructFrustum(1000.0f, _camera->GetMatrixProj(), _camera->GetMatrixView());
+
+	_map->DrawMap();
 
 	if (_scene01)
 		_scene01->Draw();
@@ -121,7 +126,7 @@ bool PlayState::onUpdate()
 	}
 	_camera->SetPosicion(_zombie01->transform.position->x,_camera->_pos.y, _camera->_pos.z); // le asigno la posicion de la camara al player
 	
-	if (_zombie01->transform.position->x < -1000)
+	if (_zombie01->transform.position->x < -75)
 		_zombie01->transform.position->x = 600;
 
 	_sol->transform.rotation->z += 10.0 * _timeMeter->GetDT();
