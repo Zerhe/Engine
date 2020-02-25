@@ -25,6 +25,28 @@ void GameObject::Draw()
 	_graficos->SetMatrixWorld(_graficos->matrices.top());
 	_graficos->matrices.pop();
 }
+void GameObject::DrawTileMap(int tileSize, int height, int weight, int posX)
+{
+	_graficos->matrices.push(_graficos->GetMatrixWorld());
+	transform.LoadTransform(_graficos);
+	int k = 0;
+
+	for (int i = 0; i < height; i++)
+	{
+		for (int j = 0; j < weight; j++)
+		{
+			(*childs)[k]->Draw();
+			k++;
+			//transform.position->x += tileSize;
+			//transform.LoadTransform(_graficos);
+		}
+		//transform.position->y -= tileSize;
+		//transform.position->x = posX;
+		//transform.LoadTransform(_graficos);
+	}
+	_graficos->SetMatrixWorld(_graficos->matrices.top());
+	_graficos->matrices.pop();
+}
 Node* GameObject::GetComponent(const char* typeSearch)
 {
 	for (int i = 0; i < childs->size(); i++)

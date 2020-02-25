@@ -126,7 +126,7 @@ bool Graphics::SetupScene()
 	pd3dDevice->SetRenderState(D3DRS_ZFUNC, D3DCMP_LESSEQUAL);
 
 	// Fijo valores por defecto para operaciones con el canal alpha
-	pd3dDevice->SetRenderState(D3DRS_ALPHABLENDENABLE, FALSE);
+	pd3dDevice->SetRenderState(D3DRS_ALPHABLENDENABLE, TRUE);
 	pd3dDevice->SetRenderState(D3DRS_BLENDOP, D3DBLENDOP_ADD);
 	pd3dDevice->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);
 	pd3dDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);

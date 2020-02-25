@@ -1,55 +1,58 @@
 #include "Map.h"
 
-Map::Map(Graphics* graficos, float posX, float posY, Sprite* dirt, Sprite* sky)
+Map::Map(Graphics* graficos, float posX, float posY, int tileSize, Sprite* tile01, Sprite* tile02, const char * tileMapLocation)
 {
-	tileSize = 75;
+	_tileSize = tileSize;
 	_posX = posX;
 	_posY = posY;
-	_dirt = dirt;
-	_sky = sky;
-	int map01[10][20] = { { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-						  { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-						  { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-						  { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-						  { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-						  { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-						  { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-						  { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
-						  { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
-						  { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 } };
-	for (int i = 0; i < 10; i++)
-	{
-		for (int j = 0; j < 20; j++)
-		{
-			objectMap[i][j] = new GameObject(graficos, _posX, _posY, 0, 0, 0, 0, 1, 1, 1);
-			_posX += tileSize;
-		}
-		_posX = posX;
-		_posY -= tileSize;
-	}
-	LoadMap(map01);
-}
-void Map::LoadMap(int map[10][20])
-{
-	int type = 0;
+	_tile01 = tile01;
+	_tile02 = tile02;
+	_tileMapLocation = tileMapLocation;
 
 	for (int i = 0; i < 10; i++)
 	{
 		for (int j = 0; j < 20; j++)
 		{
-			_map[i][j] = map[i][j];
+			objectMap[i][j] = new GameObject(graficos, _posX, _posY, 0, 0, 0, 0, 1, 1, 1);
+			_posX += _tileSize;
+		}
+		_posX = posX;
+		_posY -= _tileSize;
+	}
+
+	//objectMap = new GameObject(graficos, _posX, _posY, 0, 0, 0, 0, 1, 1, 1);
+
+	LoadMap(_tileMapLocation);
+}
+void Map::LoadMap(const char * tileMapLocation)
+{
+	std::ifstream openfile(tileMapLocation);
+	string s;
+	openfile >> s;
+	_height = Lib::StringToInt(s);
+	openfile >> s;
+	_weight = Lib::StringToInt(s);
+	
+	int type = 0;
+
+	for (int i = 0; i < _height; i++)
+	{
+		for (int j = 0; j < _weight; j++)
+		{
+			//_map[i][j] = map[i][j];
+			openfile >> _map[i][j];
 
 			type = _map[i][j];
 
 			switch (type)
 			{
 			case 0:
-				srs[i][j] = new SpriteRenderer(_sky);
+				srs[i][j] = new SpriteRenderer(_tile02);
 				objectMap[i][j]->AddChild(srs[i][j]);
 				//objectMap[i][j]->Draw();
 				break;
 			case 1:
-				srs[i][j] = new SpriteRenderer(_dirt);
+				srs[i][j] = new SpriteRenderer(_tile01);
 				objectMap[i][j]->AddChild(srs[i][j]);
 				//objectMap[i][j]->Draw();
 				break;
@@ -61,9 +64,12 @@ void Map::LoadMap(int map[10][20])
 }
 void Map::DrawMap()
 {
-	for (int i = 0; i < 10; i++)
+	//objectMap->DrawTileMap(_tileSize, _height, _weight, _posX);
+	//objectMap->Draw();
+
+	for (int i = 0; i < _height; i++)
 	{
-		for (int j = 0; j < 20; j++)
+		for (int j = 0; j < _weight; j++)
 		{
 			objectMap[i][j]->Draw();
 		}

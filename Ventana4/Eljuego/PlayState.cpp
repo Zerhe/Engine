@@ -7,7 +7,7 @@ bool PlayState::onInit()
 	_zombie01 = new GameObject(_graficos, 600, 180, 0, 0, 0, 0, 1, 1, 1);
 	_zombie02 = new GameObject(_graficos, 200, 180, 0, 0, 0, 0, 1, 1, 1);
 	_sol = new GameObject(_graficos, 700, 500, 0, 0, 0, 0, 1, 1, 1);
-	_piedra = new GameObject(_graficos, 800, 160, 0, 0, 0, 0, 1, 1, 1);
+	_piedra = new GameObject(_graficos, 800, 150, 0, 0, 0, 0, 1, 1, 1);
 	_cubo = new GameObject(_graficos, 200, 400, 0, 0, 0, 0, 100, 100, 100);
 	_objectEmpty = new GameObject(_graficos, 400, 500, 0, 0, 0, 0, 1, 1, 1);
 
@@ -20,7 +20,7 @@ bool PlayState::onInit()
 	_sprite06 = new Sprite(_graficos, _textureManager, 75.0f, 75.0f, Square, 0.0f, L"Assets//Sky.jpg", 260.0f, 260.0f, 1);
 	_mesh = new Mesh(_graficos, _textureManager, L"Assets//Estrella.png", "Assets//cube.obj");
 	_mesh->LoadOBJ();
-	_map = new Map(_graficos, 0, 600, _sprite05, _sprite06);
+	_map = new Map(_graficos, 0, 600, 75, _sprite05, _sprite06, "Assets//TileMap.txt");
 
 	_spriteRenderer01 = new SpriteRenderer(_sprite01);
 	_spriteRenderer02 = new SpriteRenderer(_sprite02);

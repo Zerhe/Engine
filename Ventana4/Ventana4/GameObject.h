@@ -22,6 +22,7 @@ public:
 	bool _inamovible = false;
 	int _mass;
 	void Draw();
+	void DrawTileMap(int tileSize, int height, int weight, int posX);
 	Node* GetComponent(const char* typeSearch);
 	void OnCollision(GameObject* entidad);
 };
