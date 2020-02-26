@@ -10,15 +10,17 @@
 #include "GameObject.h"
 #include "Sprite.h"
 #include "SpriteRenderer.h"
+#include <vector>
 using namespace std;
 
 class VENTANA4_API Map
 {
-	int _map[10][20];
-	GameObject* objectMap[10][20];
+	Graphics* _graficos;
+	int _map[100][100];
+	//GameObject* objectMap[100][100];
 	//GameObject* objectMap;
-	SpriteRenderer* srs[10][20];
-	Vector2 tilesPositions;
+	SpriteRenderer* srs[100][100];
+	//vector <Vector2>* _tilesPositions;
 
 	Sprite* _tile01;
 	Sprite* _tile02;
@@ -30,8 +32,11 @@ class VENTANA4_API Map
 	const char * _tileMapLocation;
 
 public:
+	GameObject* objectMap[100][100];
 	Map(Graphics* graficos, float posX, float posY, int tileSize, Sprite* tile01, Sprite* tile02, const char * tileMapLocation);
 	void LoadMap(const char * tileMapLocation);
 	void DrawMap();
+	Vector2 TileNearObject(GameObject* object);
+
 };
 #endif

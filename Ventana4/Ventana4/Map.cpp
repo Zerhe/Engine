@@ -2,6 +2,7 @@
 
 Map::Map(Graphics* graficos, float posX, float posY, int tileSize, Sprite* tile01, Sprite* tile02, const char * tileMapLocation)
 {
+	_graficos = graficos;
 	_tileSize = tileSize;
 	_posX = posX;
 	_posY = posY;
@@ -9,16 +10,16 @@ Map::Map(Graphics* graficos, float posX, float posY, int tileSize, Sprite* tile0
 	_tile02 = tile02;
 	_tileMapLocation = tileMapLocation;
 
-	for (int i = 0; i < 10; i++)
+	/*for (int i = 0; i < 100; i++)
 	{
-		for (int j = 0; j < 20; j++)
+		for (int j = 0; j < 100; j++)
 		{
 			objectMap[i][j] = new GameObject(graficos, _posX, _posY, 0, 0, 0, 0, 1, 1, 1);
 			_posX += _tileSize;
 		}
 		_posX = posX;
 		_posY -= _tileSize;
-	}
+	}*/
 
 	//objectMap = new GameObject(graficos, _posX, _posY, 0, 0, 0, 0, 1, 1, 1);
 
@@ -34,14 +35,17 @@ void Map::LoadMap(const char * tileMapLocation)
 	_weight = Lib::StringToInt(s);
 	
 	int type = 0;
+	int posXinicial = _posX;
+	int posYInicial = _posY;
 
 	for (int i = 0; i < _height; i++)
 	{
 		for (int j = 0; j < _weight; j++)
 		{
-			//_map[i][j] = map[i][j];
-			openfile >> _map[i][j];
+			objectMap[i][j] = new GameObject(_graficos, _posX, _posY, 0, 0, 0, 0, 1, 1, 1);
+			_posX += _tileSize;
 
+			openfile >> _map[i][j];
 			type = _map[i][j];
 
 			switch (type)
@@ -60,6 +64,8 @@ void Map::LoadMap(const char * tileMapLocation)
 				break;
 			}
 		}
+		_posX = posXinicial;
+		_posY -= _tileSize;
 	}
 }
 void Map::DrawMap()
@@ -74,4 +80,44 @@ void Map::DrawMap()
 			objectMap[i][j]->Draw();
 		}
 	}
+}
+Vector2 Map::TileNearObject(GameObject* object)
+{
+	float smallerDistance = 0;
+	float distance;
+	Vector2 coords = { 0,1 };
+	Vector3 object01;
+	Vector3 object02;
+	object01.x = object->transform.position->x;
+	object01.y = object->transform.position->y;
+	object01.z = object->transform.position->z;
+
+	for (int i = 0; i < _height; i++)
+	{
+		for (int j = 0; j < _weight; j++)
+		{
+			object02.x = objectMap[i][j]->transform.position->x;
+			object02.y = objectMap[i][j]->transform.position->y;
+			object02.z = objectMap[i][j]->transform.position->z;
+
+			distance = Lib::CalculateDistance(object01, object02);
+
+			if (i == 0 && j == 0)
+			{
+				smallerDistance = distance;
+				coords.x = j;
+				coords.y = i;
+			}
+			else
+			{
+				if (distance < smallerDistance)
+				{
+					smallerDistance = distance;
+					coords.x = j;
+					coords.y = i;
+				}
+			}
+		}
+	}
+	return coords;
 }

@@ -47,11 +47,11 @@ void GameObject::DrawTileMap(int tileSize, int height, int weight, int posX)
 	_graficos->SetMatrixWorld(_graficos->matrices.top());
 	_graficos->matrices.pop();
 }
-Node* GameObject::GetComponent(const char* typeSearch)
+Node* GameObject::GetComponent(string typeSearch)
 {
 	for (int i = 0; i < childs->size(); i++)
 	{
-		const char* type = (*childs)[i]->type;
+		string type = (*childs)[i]->type;
 		if (type == typeSearch)
 		{
 			return (*childs)[i];

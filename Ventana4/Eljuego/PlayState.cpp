@@ -5,9 +5,9 @@ bool PlayState::onInit()
 	_scene01 = new Scene(_graficos);
 	_cameraObject = new GameObject(_graficos, 0, 0, 0, 0, 0, 0, 1, 1, 1);
 	_zombie01 = new GameObject(_graficos, 600, 180, 0, 0, 0, 0, 1, 1, 1);
-	_zombie02 = new GameObject(_graficos, 200, 180, 0, 0, 0, 0, 1, 1, 1);
+	_zombie02 = new GameObject(_graficos, 1000, 180, 0, 0, 0, 0, 1, 1, 1);
 	_sol = new GameObject(_graficos, 700, 500, 0, 0, 0, 0, 1, 1, 1);
-	_piedra = new GameObject(_graficos, 800, 150, 0, 0, 0, 0, 1, 1, 1);
+	_piedra = new GameObject(_graficos, 400, 150, 0, 0, 0, 0, 1, 1, 1);
 	_cubo = new GameObject(_graficos, 200, 400, 0, 0, 0, 0, 100, 100, 100);
 	_objectEmpty = new GameObject(_graficos, 400, 500, 0, 0, 0, 0, 1, 1, 1);
 
@@ -102,7 +102,7 @@ bool PlayState::onUpdate()
 		accumTime -= 0.1;
 
 		_sprite01->LaterFrame();
-		_sprite02->LaterFrame();
+		//_sprite02->LaterFrame();
 	}
 	if (_contador == 2)
 	{
@@ -124,13 +124,18 @@ bool PlayState::onUpdate()
 		_zombie01->transform.position->x -= 80.0 * _timeMeter->GetDT();
 		_sprite01->FlipX(false);
 	}
-	_camera->SetPosicion(_zombie01->transform.position->x,_camera->_pos.y, _camera->_pos.z); // le asigno la posicion de la camara al player
+	_camera->SetPosicion(_zombie01->transform.position->x,_camera->_pos.y, _camera->_pos.z); // le asigno la posicion del player en x a la camara
 	
-	if (_zombie01->transform.position->x < -75)
+	if (_zombie01->transform.position->x > 1000)
 		_zombie01->transform.position->x = 600;
 
 	_sol->transform.rotation->z += 10.0 * _timeMeter->GetDT();
 	_cubo->transform.rotation->x += 10.0 *_timeMeter->GetDT();
 
+	Vector2 coord = _map->TileNearObject(_zombie01);
+	int coordX = coord.x;
+	int coordY = coord.y;
+	//SpriteRenderer* c = dynamic_cast<SpriteRenderer*>(_map->objectMap[coordX][coordY]->GetComponent("SpriteRenderer"));
+	//c->SetSprite(_sprite05);
 	return true;
 }
